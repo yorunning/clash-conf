@@ -6,7 +6,7 @@
 
 ### 订阅转换配置文件地址：
 
-[https://yorun.me/clash.ini](https://yorun.me/clash.ini)
+[https://raw.fastgit.org/yorunning/clash_conf/main/Clash/clash.ini](https://raw.fastgit.org/yorunning/clash_conf/main/Clash/clash.ini)
 
 ### 一键订阅转换链接：
 
