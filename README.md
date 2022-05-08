@@ -1,2 +1,5 @@
-# clash_conf
-Clash/Stash配置、规则、复写整理
+### 1.clash配置
+
+```
+https://yorun.me/clash.ini
+```
