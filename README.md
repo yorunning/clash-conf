@@ -30,6 +30,8 @@ https://sub.xeton.dev/sub?target=clash&config=https://raw.fastgit.org/yorunning/
 [subconverter文档](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
 
 ### 配置
+[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)
+
 [ACL4SSR规则碎片](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash)
 
 [ACL4SSR订阅转换页面](https://acl4ssr-sub.github.io/)
