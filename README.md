@@ -22,8 +22,10 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 ### 一键订阅转换链接：
 *（修改filename & url）*
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini&emoji=true&filename=[sub_name].yaml&url=[sub_url]  
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini&emoji=true&filename=[sub_name].yaml&url=[sub_url]
 ```
+
+> https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini&emoji=true&filename=[sub_name].yaml&url=[sub_url]
 
 ### 复写模块
 京东比价：[https://raw.githubusercontent.com/yorunning/clash_conf/master/stash/jd_price.stoverride](https://raw.githubusercontent.com/yorunning/clash_conf/master/stash/jd_price.stoverride)
