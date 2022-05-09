@@ -7,12 +7,12 @@ http:
     - "api.m.jd.com"
   script:
     - match: ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(wareBusiness|serverConfig|basicConfig)
-      name: JD_Price
+      name: jd_price
       type: response
       require-body: true
       timeout: 10
       
 script-providers:
-  JD_Price:
+  jd_price:
     url: https://raw.githubusercontent.com/githubdulong/Script/master/jd_price.js
-    interval: 60
+    interval: 86400
