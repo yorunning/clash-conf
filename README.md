@@ -4,29 +4,29 @@
 [https://sub.xeton.dev/sub?](https://sub.xeton.dev/sub?)
 
 ### 订阅转换配置文件地址：
-[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/clash/clash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/clash/clash.ini) （墙内可访问）
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini) （墙内可访问）
 [https://raw.githubusercontent.com/yorunning/clash_conf/main/clash/clash.ini](https://raw.githubusercontent.com/yorunning/clash_conf/main/clash/clash.ini)
 
 ### 一键订阅转换链接：
 *（修改filename & url）*
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/clash/clash.ini&filename=[sub_name].yaml&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini&filename=[sub_name].yaml&url=[sub_url]
 ```
 
 ## Stash配置
 
 ### 订阅转换配置文件地址：
-[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini) （墙内可访问）
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini) （墙内可访问）
 [https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/stash.ini](https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/stash.ini)
 
 ### 一键订阅转换链接：
 *（修改filename & url）*
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@master/stash/stash.ini&filename=[sub_name].yaml&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&filename=[sub_name].yaml&url=[sub_url]
 ```
 
 ### 复写模块
-京东比价：[https://raw.githubusercontent.com/yorunning/clash_conf/master/stash/jd_price.stoverride](https://raw.githubusercontent.com/yorunning/clash_conf/master/stash/jd_price.stoverride)
+京东比价：[https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/jd_price.stoverride](https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/jd_price.stoverride)
 
 ## 其他资源
 
