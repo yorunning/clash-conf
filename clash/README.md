@@ -3,4 +3,4 @@ clash.ini：增强广告拦截、隐私防护及完整GFW代理列表，总规�
 
 clash_lite.ini:proxy_lite精简代理列表，总规则8.5K条，适合移动端使用（减少规则匹配，节省功耗）。
 
-**注：**[~/stash/stash.ini](https://github.com/yorunning/clash_conf/blob/main/stash/stash.ini)为clash_lite.ini的硬链接，内容一样。
+**注：**[clash_conf/stash/stash.ini](https://github.com/yorunning/clash_conf/blob/main/stash/stash.ini)为clash_lite.ini的硬链接，内容一样。
