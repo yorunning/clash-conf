@@ -10,7 +10,7 @@
 ### 一键订阅转换链接：
 *（修改filename & url）*
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini&filename=[sub_name].yaml&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini&filename=[sub_name]&url=[sub_url]
 ```
 
 ## Stash配置
@@ -22,7 +22,7 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 ### 一键订阅转换链接：
 *（修改filename & url）*
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&filename=[sub_name].yaml&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&filename=[sub_name]&url=[sub_url]
 ```
 
 ### 复写模块
