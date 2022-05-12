@@ -22,7 +22,7 @@ proxy-groups:
       wifi12345678: DIRECT
       default: 🎥 奈飞视频
       
-- name: 🚥 全球直连
+  - name: 🚥 全球直连
     type: select
     proxies:
       - 🎯 全球直连
@@ -32,7 +32,7 @@ proxy-groups:
       wifi12345678: DIRECT
       default: 🎯 全球直连
       
-- name: 🚥 广告拦截
+  - name: 🚥 广告拦截
     type: select
     proxies:
       - 🛑 广告拦截
@@ -42,7 +42,7 @@ proxy-groups:
       wifi12345678: DIRECT
       default: 🛑 广告拦截
       
-- name: 🚥 漏网之鱼
+  - name: 🚥 漏网之鱼
     type: select
     proxies:
       - 🐟 漏网之鱼
