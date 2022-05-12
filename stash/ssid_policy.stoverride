@@ -12,7 +12,7 @@ proxy-groups:
       wifi12345678: DIRECT
       default: 🚀 节点选择
 
-  - name: 🚥 全球直连
+  - name: 🚥 奈飞视频
     type: select
     proxies:
       - 🎥 奈飞视频
