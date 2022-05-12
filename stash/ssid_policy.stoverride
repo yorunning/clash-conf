@@ -2,7 +2,7 @@ name: SSID Policy
 desc: 自用SSID策略切换
 
 proxy-groups:
-  - name: 🚥 SSID切换
+  - name: "🚥 SSID切换"
     type: select
     proxies:
       - 🚀 节点选择
