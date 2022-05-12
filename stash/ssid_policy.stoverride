@@ -2,13 +2,53 @@ name: SSID Policy
 desc: 自用SSID策略切换
 
 proxy-groups:
-  - name: 🚥 SSID切换
+  - name: 🚥 节点选择
     type: select
     proxies:
       - 🚀 节点选择
-      - 🎯 全球直连
+      - DIRECT
     ssid-policy:
-      yorun-PC: 🎯 全球直连
-      wifi12345678: 🎯 全球直连
-      cellular: 🚀 节点选择
+      yorun-PC: DIRECT
+      wifi12345678: DIRECT
       default: 🚀 节点选择
+
+  - name: 🚥 全球直连
+    type: select
+    proxies:
+      - 🎥 奈飞视频
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      wifi12345678: DIRECT
+      default: 🎥 奈飞视频
+      
+- name: 🚥 全球直连
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      wifi12345678: DIRECT
+      default: 🎯 全球直连
+      
+- name: 🚥 广告拦截
+    type: select
+    proxies:
+      - 🛑 广告拦截
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      wifi12345678: DIRECT
+      default: 🛑 广告拦截
+      
+- name: 🚥 漏网之鱼
+    type: select
+    proxies:
+      - 🐟 漏网之鱼
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      wifi12345678: DIRECT
+      default: 🐟 漏网之鱼
+      
