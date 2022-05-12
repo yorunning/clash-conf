@@ -9,7 +9,6 @@ proxy-groups:
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      wifi12345678: DIRECT
       default: 🚀 节点选择
 
   - name: 🚥 奈飞视频
@@ -19,9 +18,8 @@ proxy-groups:
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      wifi12345678: DIRECT
       default: 🎥 奈飞视频
-      
+
   - name: 🚥 全球直连
     type: select
     proxies:
@@ -29,9 +27,8 @@ proxy-groups:
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      wifi12345678: DIRECT
       default: 🎯 全球直连
-      
+
   - name: 🚥 广告拦截
     type: select
     proxies:
@@ -39,9 +36,8 @@ proxy-groups:
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      wifi12345678: DIRECT
       default: 🛑 广告拦截
-      
+
   - name: 🚥 漏网之鱼
     type: select
     proxies:
@@ -49,6 +45,4 @@ proxy-groups:
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      wifi12345678: DIRECT
       default: 🐟 漏网之鱼
-      

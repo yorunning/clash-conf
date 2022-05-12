@@ -1,0 +1,235 @@
+mode: rule
+log-level: info
+
+proxy-providers:
+  All: &All
+    type: http
+    url: "https://sub.xeton.dev/sub?target=clash&list=true&udp=true&url="
+    interval: 86400
+    path: ./all.yaml
+    health-check: # ???
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+  HK:
+    <<: *All
+    filter: 港|HK|Hong Kong
+
+  TW:
+    <<: *All
+    filter: 台|新北|彰化|TW|Taiwan
+
+  SG:
+    <<: *ALL
+    filter: 新加坡|坡|狮城|SG|Singapore
+
+  JP:
+    <<: *All
+    filter: 日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan
+
+  US:
+    <<: *All
+    filter: 美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
+
+  NetEaseMusic:
+    type: http
+    url: "https://sub.xeton.dev/sub?target=clash&url=https://cdn.jsdelivr.net/gh/nameking77/Qx@main/music/wyy.txt&list=true&udp=true"
+    interval: 86400
+    path: ./proxy/NetEaseMusic.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+  - name: 节点选择
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    use:
+      - All
+    proxies:
+      - 自动选择
+
+  - name: NETFLIX
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    proxies:
+      - 节点选择
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+
+  - name: 网易云音乐
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
+    proxies:
+      - DIRECT
+
+  - name: 手动切换
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+    use:
+      - All
+
+  - name: 自动选择
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+    use:
+      - HK
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 故障转移
+    type: fallback
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
+    use:
+      - HK
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 负载均衡
+    type: load-balance
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
+    use:
+      - HK
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 全球直连
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+    proxies:
+      - DIRECT
+
+  - name: 广告拦截
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+    proxies:
+      - REJECT
+
+  - name: 漏网之鱼
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+    proxies:
+      - 节点选择
+
+  - name: 香港节点
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    use:
+      - HK
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 台湾节点
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
+    use:
+      - TW
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 新加坡节点
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+    use:
+      - SG
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 日本节点
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+    use:
+      - JP
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 美国节点
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+    use:
+      - US
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+  - name: 网易云解锁
+    type: url-test
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music_Unlock.png
+    use:
+      - HKNetEaseMusic
+    url: "http://www.gstatic.com/generate_204"
+    interval: 300
+
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
+    path: ./ruleset/LocalAreaNetwork.yaml
+    interval: 86400
+
+  UnBan:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/UnBan.yaml"
+    path: ./ruleset/UnBan.yaml
+    interval: 86400
+
+  BanAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
+    path: ./ruleset/BanAD.yaml
+    interval: 86400
+
+  BanProgramAD:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanProgramAD.yaml"
+    path: ./ruleset/BanProgramAD.yaml
+    interval: 86400
+
+  Netflix:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Netflix.yaml"
+    path: ./ruleset/Netflix.yaml
+    interval: 86400
+
+  NetEaseMusic:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
+    path: ./ruleset/NetEaseMusic.yaml
+    interval: 86400
+
+  ProxyGFWlist:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
+    path: ./ruleset/ProxyGFWlist.yaml
+    interval: 86400
+
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
+    path: ./ruleset/ChinaDomain.yaml
+    interval: 86400
+
+rules:
+  - RULE-SET,LocalAreaNetwork,全球直连
+  - RULE-SET,UnBan,全球直连
+  - RULE-SET,BanAD,广告拦截
+  - RULE-SET,BanProgramAD,广告拦截
+  - RULE-SET,Netflix,NETFLIX
+  - RULE-SET,NetEaseMusic,网易云音乐
+  - RULE-SET,ProxyGFWlist,节点选择
+  - RULE-SET,ChinaDomain,全球直连
+  - GEOIP,CN,全球直连
+  - MATCH,漏网之鱼
