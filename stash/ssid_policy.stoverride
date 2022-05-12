@@ -1,14 +1,14 @@
 name: SSID Policy
-desc: 自用SSID策略
+desc: 自用SSID策略切换
 
 proxy-groups:
   - name: SSID切换
     type: select
     proxies:
-      - []🚀 节点选择
-      - []🎯 全球直连
+      - 🚀 节点选择
+      - 🎯 全球直连
     ssid-policy:
-      yorun-PC: []🎯 全球直连
-      wifi12345678: []🎯 全球直连
-      cellular: []🚀 节点选择
-      default: []🚀 节点选择
+      yorun-PC: 🎯 全球直连
+      wifi12345678: 🎯 全球直连
+      cellular: 🚀 节点选择
+      default: 🚀 节点选择
