@@ -6,8 +6,8 @@ proxy-providers:
     type: http
     url: "https://sub.xeton.dev/sub?target=clash&list=true&udp=true&url="
     interval: 86400
-    path: ./all.yaml
-    health-check: # ???
+    path: ./proxy/all.yaml
+    health-check:
       enable: true
       interval: 600
       url: http://www.gstatic.com/generate_204
@@ -21,7 +21,7 @@ proxy-providers:
     filter: 台|新北|彰化|TW|Taiwan
 
   SG:
-    <<: *ALL
+    <<: *All
     filter: 新加坡|坡|狮城|SG|Singapore
 
   JP:
@@ -46,10 +46,16 @@ proxy-groups:
   - name: 节点选择
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
-    use:
-      - All
     proxies:
       - 自动选择
+      - 故障转移
+      - 负载均衡
+      - 手动切换
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
 
   - name: NETFLIX
     type: select
@@ -66,6 +72,8 @@ proxy-groups:
   - name: 网易云音乐
     type: select
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
+    use:
+      - NetEaseMusic
     proxies:
       - DIRECT
 
@@ -157,41 +165,77 @@ proxy-groups:
     url: "http://www.gstatic.com/generate_204"
     interval: 300
 
-  - name: 网易云解锁
-    type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music_Unlock.png
-    use:
-      - HKNetEaseMusic
-    url: "http://www.gstatic.com/generate_204"
-    interval: 300
+  - name: 节点选择(SSID)
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
+    proxies:
+      - 节点选择
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      default: 节点选择
+
+  - name: NETFLIX(SSID)
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
+    proxies:
+      - NETFLIX
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      default: NETFLIX
+
+  - name: 漏网之鱼(SSID)
+    type: select
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
+    proxies:
+      - 漏网之鱼
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      default: 漏网之鱼
 
 rule-providers:
-  LocalAreaNetwork:
+  LocalAreaNetwork_domain:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/LocalAreaNetwork.yaml"
-    path: ./ruleset/LocalAreaNetwork.yaml
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_domain.yaml"
+    path: ./ruleset/LocalAreaNetwork_domain.yaml
     interval: 86400
 
-  UnBan:
+  LocalAreaNetwork_ipcidr:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/UnBan.yaml"
-    path: ./ruleset/UnBan.yaml
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_ipcidr.yaml"
+    path: ./ruleset/LocalAreaNetwork_ipcidr.yaml
     interval: 86400
 
-  BanAD:
+  UnBan_domain:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanAD.yaml"
-    path: ./ruleset/BanAD.yaml
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/UnBan_domain.yaml"
+    path: ./ruleset/UnBan_domain.yaml
     interval: 86400
 
-  BanProgramAD:
+  BanAD_domain:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/BanProgramAD.yaml"
-    path: ./ruleset/BanProgramAD.yaml
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanAD_domain.yaml"
+    path: ./ruleset/BanAD_domain.yaml
+    interval: 86400
+
+  BanProgramAD_domain:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_domain.yaml"
+    path: ./ruleset/BanProgramAD_domain.yaml
+    interval: 86400
+
+  BanProgramAD_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_ipcidr.yaml"
+    path: ./ruleset/BanProgramAD_ipcidr.yaml
     interval: 86400
 
   Netflix:
@@ -208,28 +252,70 @@ rule-providers:
     path: ./ruleset/NetEaseMusic.yaml
     interval: 86400
 
-  ProxyGFWlist:
+  ProxyGFWlist_domain:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ProxyGFWlist.yaml"
-    path: ./ruleset/ProxyGFWlist.yaml
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_domain.yaml"
+    path: ./ruleset/ProxyGFWlist_domain.yaml
     interval: 86400
 
-  ChinaDomain:
+  ProxyGFWlist_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_ipcidr.yaml"
+    path: ./ruleset/ProxyGFWlist_ipcidr.yaml
+    interval: 86400
+
+  ChinaDomain_domain:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_domain.yaml"
+    path: ./ruleset/ChinaDomain_domain.yaml
+    interval: 86400
+
+  ChinaDomain_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_ipcidr.yaml"
+    path: ./ruleset/ChinaDomain_ipcidr.yaml
+    interval: 86400
+
+  Proxy_classical:
     type: http
     behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/ChinaDomain.yaml"
-    path: ./ruleset/ChinaDomain.yaml
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Proxy_classical.yaml"
+    path: ./ruleset/Proxy_classical.yaml
+    interval: 86400
+  
+  Direct_classical:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Direct_classical.yaml"
+    path: ./ruleset/Direct_classical.yaml
+    interval: 86400
+
+  Reject_classical:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Reject_classical.yaml"
+    path: ./ruleset/Reject_classical.yaml
     interval: 86400
 
 rules:
-  - RULE-SET,LocalAreaNetwork,全球直连
-  - RULE-SET,UnBan,全球直连
-  - RULE-SET,BanAD,广告拦截
-  - RULE-SET,BanProgramAD,广告拦截
-  - RULE-SET,Netflix,NETFLIX
+  - RULE-SET,LocalAreaNetwork_domain,全球直连
+  - RULE-SET,LocalAreaNetwork_ipcidr,全球直连
+  - RULE-SET,UnBan_domain,全球直连
+  - RULE-SET,Reject_classical,广告拦截
+  - RULE-SET,BanAD_domain,广告拦截
+  - RULE-SET,BanProgramAD_domain,广告拦截
+  - RULE-SET,BanProgramAD_ipcidr,广告拦截
+  - RULE-SET,Netflix,NETFLIX(SSID)
   - RULE-SET,NetEaseMusic,网易云音乐
-  - RULE-SET,ProxyGFWlist,节点选择
-  - RULE-SET,ChinaDomain,全球直连
+  - RULE-SET,Proxy_classical,节点选择(SSID)
+  - RULE-SET,ProxyGFWlist_domain,节点选择(SSID)
+  - RULE-SET,ProxyGFWlist_ipcidr,节点选择(SSID)
+  - RULE-SET,Direct_classical,全球直连
+  - RULE-SET,ChinaDomain_domain,全球直连
+  - RULE-SET,ChinaDomain_ipcidr,全球直连
   - GEOIP,CN,全球直连
-  - MATCH,漏网之鱼
+  - MATCH,漏网之鱼(SSID)

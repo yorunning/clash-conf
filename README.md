@@ -4,8 +4,7 @@
 [https://sub.xeton.dev/sub?](https://sub.xeton.dev/sub?)
 
 ### 订阅转换配置文件地址：
-[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini) （墙内可访问）
-[https://raw.githubusercontent.com/yorunning/clash_conf/main/clash/clash.ini](https://raw.githubusercontent.com/yorunning/clash_conf/main/clash/clash.ini)
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini)
 
 ### 一键订阅转换链接：
 *（修改filename & url）*
@@ -15,18 +14,25 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 
 ## Stash配置
 
-### 订阅转换配置文件地址：
-[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini) （墙内可访问）
-[https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/stash.ini](https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/stash.ini)
+### 用法1.订阅转换
 
-### 一键订阅转换链接：
+#### 订阅转换配置文件地址：
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini)
+
+#### 一键订阅转换链接：
 *（修改filename & url）*
 ```
 https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&filename=[sub_name]&url=[sub_url]
 ```
 
+### 用法2.配置文件导入
+
+#### 配置文件地址：
+*（修改[proxy-providers项中的url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L7)）*
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml)
+
 ### 复写模块
-京东比价：[https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/jd_price.stoverride](https://raw.githubusercontent.com/yorunning/clash_conf/main/stash/jd_price.stoverride)
+京东比价：[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/jd_price.stoverride](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/jd_price.stoverride)
 
 ## 其他资源
 
@@ -46,10 +52,10 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 
 [Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)
 
+[Infatuation-Fei/rule](https://github.com/Infatuation-Fei/rule)
+
 ### 复写
 [iRingo ios增强](https://github.com/VirgilClyne/iRingo)
-
-[Infatuation-Fei/rule](https://github.com/Infatuation-Fei/rule)
 
 [blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)
 
