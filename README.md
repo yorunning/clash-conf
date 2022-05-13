@@ -27,9 +27,11 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 
 ### 用法2.配置文件导入
 
-#### 配置文件地址：
-*（修改[proxy-providers项中的url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L7)）*
+#### Stash配置文件地址：
+
 [https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml)
+
+修改*proxy-providers*项中的[**url**](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L7)
 
 ### 复写模块
 京东比价：[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/jd_price.stoverride](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/jd_price.stoverride)
