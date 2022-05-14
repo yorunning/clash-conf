@@ -11,7 +11,7 @@ http:
       type: response
       require-body: true
       timeout: 10
-      
+
 script-providers:
   jd_price:
     url: https://raw.githubusercontent.com/githubdulong/Script/master/jd_price.js
