@@ -1,1 +1,7 @@
 own/
+
+*.py
+url.txt
+pyproject.toml
+poetry.lock
+.mypy_cache/

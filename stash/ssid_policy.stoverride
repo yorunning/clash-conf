@@ -1,5 +1,5 @@
 name: SSID Policy
-desc: 自用SSID策略切换
+desc: 自用SSID分流策略自动切换
 
 proxy-groups:
   - name: 🚥 节点选择
@@ -19,24 +19,6 @@ proxy-groups:
     ssid-policy:
       yorun-PC: DIRECT
       default: 🎥 奈飞视频
-
-  - name: 🚥 全球直连
-    type: select
-    proxies:
-      - 🎯 全球直连
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 🎯 全球直连
-
-  - name: 🚥 广告拦截
-    type: select
-    proxies:
-      - 🛑 广告拦截
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 🛑 广告拦截
 
   - name: 🚥 漏网之鱼
     type: select
