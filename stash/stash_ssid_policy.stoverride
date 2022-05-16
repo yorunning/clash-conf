@@ -1,5 +1,5 @@
 name: SSID Policy
-desc: 自用SSID分流策略自动切换
+desc: 自用SSID分流策略，根据网络变化全自动切换策略。
 
 proxy-groups:
   - name: 🚥 节点选择
@@ -11,14 +11,14 @@ proxy-groups:
       yorun-PC: DIRECT
       default: 🚀 节点选择
 
-  - name: 🚥 奈飞视频
+  - name: 🚥 Netflix
     type: select
     proxies:
-      - 🎥 奈飞视频
+      - 🎥 Netflix
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      default: 🎥 奈飞视频
+      default: 🎥 Netflix
 
   - name: 🚥 漏网之鱼
     type: select
