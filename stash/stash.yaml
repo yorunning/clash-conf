@@ -1,5 +1,6 @@
 mode: rule
 log-level: info
+subscribe-url:
 
 proxy-providers:
   All: &All
@@ -238,18 +239,32 @@ rule-providers:
     path: ./ruleset/BanProgramAD_ipcidr.yaml
     interval: 86400
 
-  Netflix:
+  Netflix_domain:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/Netflix.yaml"
-    path: ./ruleset/Netflix.yaml
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_domain.yaml"
+    path: ./ruleset/Netflix_domain.yaml
     interval: 86400
 
-  NetEaseMusic:
+  Netflix_ipcidr:
     type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Providers/Ruleset/NetEaseMusic.yaml"
-    path: ./ruleset/NetEaseMusic.yaml
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_ipcidr.yaml"
+    path: ./ruleset/Netflix_ipcidr.yaml
+    interval: 86400
+
+  NetEaseMusic_domain:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_domain.yaml"
+    path: ./ruleset/NetEaseMusic_domain.yaml
+    interval: 86400
+
+  NetEaseMusic_ipcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_ipcidr.yaml"
+    path: ./ruleset/NetEaseMusic_ipcidr.yaml
     interval: 86400
 
   ProxyGFWlist_domain:
@@ -280,41 +295,19 @@ rule-providers:
     path: ./ruleset/ChinaDomain_ipcidr.yaml
     interval: 86400
 
-  Proxy_classical:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Proxy_classical.yaml"
-    path: ./ruleset/Proxy_classical.yaml
-    interval: 86400
-
-  Direct_classical:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Direct_classical.yaml"
-    path: ./ruleset/Direct_classical.yaml
-    interval: 86400
-
-  Reject_classical:
-    type: http
-    behavior: classical
-    url: "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Reject_classical.yaml"
-    path: ./ruleset/Reject_classical.yaml
-    interval: 86400
-
 rules:
   - RULE-SET,LocalAreaNetwork_domain,全球直连
   - RULE-SET,LocalAreaNetwork_ipcidr,全球直连
   - RULE-SET,UnBan_domain,全球直连
-  - RULE-SET,Reject_classical,广告拦截
   - RULE-SET,BanAD_domain,广告拦截
   - RULE-SET,BanProgramAD_domain,广告拦截
   - RULE-SET,BanProgramAD_ipcidr,广告拦截
-  - RULE-SET,Netflix,NETFLIX(SSID)
-  - RULE-SET,NetEaseMusic,网易云音乐
-  - RULE-SET,Proxy_classical,节点选择(SSID)
+  - RULE-SET,Netflix_domain,NETFLIX(SSID)
+  - RULE-SET,Netflix_ipcidr,NETFLIX(SSID)
+  - RULE-SET,NetEaseMusic_domain,网易云音乐
+  - RULE-SET,NetEaseMusic_ipcidr,网易云音乐
   - RULE-SET,ProxyGFWlist_domain,节点选择(SSID)
   - RULE-SET,ProxyGFWlist_ipcidr,节点选择(SSID)
-  - RULE-SET,Direct_classical,全球直连
   - RULE-SET,ChinaDomain_domain,全球直连
   - RULE-SET,ChinaDomain_ipcidr,全球直连
   - GEOIP,CN,全球直连
