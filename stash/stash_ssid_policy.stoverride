@@ -14,11 +14,11 @@ proxy-groups:
   - name: 🚥 Netflix
     type: select
     proxies:
-      - 🎥 Netflix
+      - 📺 Netflix
       - DIRECT
     ssid-policy:
       yorun-PC: DIRECT
-      default: 🎥 Netflix
+      default: 📺 Netflix
 
   - name: 🚥 漏网之鱼
     type: select
