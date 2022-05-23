@@ -4,9 +4,6 @@ import base64
 import requests
 import yaml
 
-# https://sub.xeton.dev/getruleset?\
-# type=4\
-# &url=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
 
 """
 文档地址：https://github.com/tindy2013/subconverter/blob/master/README-cn.md#%E8%A7%84%E5%88%99%E8%BD%AC%E6%8D%A2
@@ -55,7 +52,7 @@ def main():
             # 下载转换后的rule-set
             response_content = requests.get(prepro_url).content
 
-            # 清除内容为空的规则集
+            # 跳过内容为空的规则集
             if response_content != b"payload:\n  - '0.0.0.0/32'":
 
                 name_suffix = '_domain' if type == 3 else '_ipcidr'
@@ -87,7 +84,7 @@ def main():
             fw.write('\n')
         dump = {}
 
-    # 处理字符串fix
+    # 处理字符串‘问题
     with open(target_rule_providers, 'r') as fr:
         all_text = fr.read().replace("'", '')
     with open(target_rule_providers, 'w') as fw:
