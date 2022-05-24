@@ -3,8 +3,7 @@ log-level: info
 subscribe-url: ""
 
 dns:
-  default-nameserver:
-    - 114.114.114.114
+  nameserver:
     - 223.5.5.5
     - 8.8.8.8
 
