@@ -94,7 +94,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
     use:
       - HK
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 故障转移
@@ -102,7 +102,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
     use:
       - HK
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 负载均衡
@@ -110,7 +110,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
     use:
       - HK
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 全球直连
@@ -136,7 +136,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
     use:
       - HK
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 台湾节点
@@ -144,7 +144,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
     use:
       - TW
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 新加坡节点
@@ -152,7 +152,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
     use:
       - SG
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 日本节点
@@ -160,7 +160,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
     use:
       - JP
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 美国节点
@@ -168,7 +168,7 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
     use:
       - US
-    url: "http://www.gstatic.com/generate_204"
+    url: http://www.gstatic.com/generate_204
     interval: 300
 
   - name: 节点选择(SSID)
