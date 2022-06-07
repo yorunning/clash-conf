@@ -14,7 +14,7 @@ import yaml
 conv_interface = 'https://sub.xeton.dev/getruleset?'
 conv_type = (3, 4)
 target_dir = './rule/'
-target_rule_providers = './rule-providers.yaml'
+target_file = './rule-providers.yaml'
 
 
 def url_base64_encode(url):
@@ -32,8 +32,8 @@ def main():
     else:
         os.mkdir(target_dir)
 
-    if os.path.exists(target_rule_providers):
-        os.remove(target_rule_providers)
+    if os.path.exists(target_file):
+        os.remove(target_file)
 
     """读取url"""
     with open('./url.txt', 'r') as fr:
@@ -73,22 +73,19 @@ def main():
         dump[name] = {
             'type': 'http',
             'behavior': name.split('_')[-1],
-            'url': r'"https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/%s.yaml"'
+            'url': 'https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/%s.yaml'
             % name,
             'path': './ruleset/%s.yaml' % name,
             'interval': 86400,
         }
-        # 保存rule-providers
-        with open(target_rule_providers, 'a') as fw:
-            fw.write(yaml.dump(dump, sort_keys=False))
-            fw.write('\n')
-        dump = {}
 
-    # 处理字符串‘问题
-    with open(target_rule_providers, 'r') as fr:
-        all_text = fr.read().replace("'", '')
-    with open(target_rule_providers, 'w') as fw:
-        fw.write(all_text)
+    root = {'rule-providers': dump}
+
+    # 生成rule-providers文本，保存
+    text = yaml.dump(root, sort_keys=False).replace('86400', '86400\n')
+
+    with open(target_file, 'w') as fw:
+        fw.write(text)
 
 
 if __name__ == '__main__':

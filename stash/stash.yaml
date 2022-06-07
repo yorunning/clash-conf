@@ -62,6 +62,10 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 美国节点
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      default: 自动选择
 
   - name: NETFLIX
     type: select
@@ -74,6 +78,10 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 美国节点
+      - DIRECT
+    ssid-policy:
+      yorun-PC: DIRECT
+      default: 节点选择
 
   - name: 网易云音乐
     type: select
@@ -170,36 +178,6 @@ proxy-groups:
       - US
     url: http://www.gstatic.com/generate_204
     interval: 300
-
-  - name: 节点选择(SSID)
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
-    proxies:
-      - 节点选择
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 节点选择
-
-  - name: NETFLIX(SSID)
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
-    proxies:
-      - NETFLIX
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: NETFLIX
-
-  - name: 漏网之鱼(SSID)
-    type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/SSID.png
-    proxies:
-      - 漏网之鱼
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 漏网之鱼
 
 rule-providers:
   LocalAreaNetwork_domain:
@@ -307,13 +285,13 @@ rules:
   - RULE-SET,BanAD_domain,广告拦截
   - RULE-SET,BanProgramAD_domain,广告拦截
   - RULE-SET,BanProgramAD_ipcidr,广告拦截
-  - RULE-SET,Netflix_domain,NETFLIX(SSID)
-  - RULE-SET,Netflix_ipcidr,NETFLIX(SSID)
+  - RULE-SET,Netflix_domain,NETFLIX
+  - RULE-SET,Netflix_ipcidr,NETFLIX
   - RULE-SET,NetEaseMusic_domain,网易云音乐
   - RULE-SET,NetEaseMusic_ipcidr,网易云音乐
-  - RULE-SET,ProxyGFWlist_domain,节点选择(SSID)
-  - RULE-SET,ProxyGFWlist_ipcidr,节点选择(SSID)
+  - RULE-SET,ProxyGFWlist_domain,节点选择
+  - RULE-SET,ProxyGFWlist_ipcidr,节点选择
   - RULE-SET,ChinaDomain_domain,全球直连
   - RULE-SET,ChinaDomain_ipcidr,全球直连
   - GEOIP,CN,全球直连
-  - MATCH,漏网之鱼(SSID)
+  - MATCH,漏网之鱼
