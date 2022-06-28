@@ -1,0 +1,14 @@
+name: 10010v3-tile
+desc: 10010v3-tile
+
+tiles:
+  - name: "10010v3-tile"
+    interval: 600
+    title: "联通余量"
+    content: ""
+    icon: "arrow.up.arrow.down.circle"
+    backgroundColor: "#663399"
+script-providers:
+  "10010v3-tile":
+    url: "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/10010v3/10010.js"
+    interval: 86400
