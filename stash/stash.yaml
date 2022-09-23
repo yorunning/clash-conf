@@ -101,7 +101,7 @@ proxy-groups:
     type: url-test
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
     use:
-      - HK
+      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
 
@@ -109,7 +109,7 @@ proxy-groups:
     type: fallback
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
     use:
-      - HK
+      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
 
@@ -117,7 +117,7 @@ proxy-groups:
     type: load-balance
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
     use:
-      - HK
+      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
 
