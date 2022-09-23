@@ -62,10 +62,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 美国节点
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 自动选择
 
   - name: NETFLIX
     type: select
@@ -78,10 +74,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 美国节点
-      - DIRECT
-    ssid-policy:
-      yorun-PC: DIRECT
-      default: 节点选择
 
   - name: 网易云音乐
     type: select
