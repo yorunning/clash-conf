@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "ruleset-conv"
-version = "0.1.0"
-description = "将classical规则集拆分为domain与ipcidr规则集。"
+version = "0.2.0"
+description = "此脚本用于将classical规则集拆分为domain与ipcidr规则集。"
 authors = ["Yorun <yorun@yorun.me>"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-PyYAML = "^6.0"
+python = "^3.10"
 requests = "^2.27.1"
+PyYAML = "^6.0"
 
 [tool.poetry.dev-dependencies]
 

@@ -5,95 +5,81 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_domain.yaml
     path: ./ruleset/LocalAreaNetwork_domain.yaml
     interval: 86400
-
   LocalAreaNetwork_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_ipcidr.yaml
     path: ./ruleset/LocalAreaNetwork_ipcidr.yaml
     interval: 86400
-
   UnBan_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/UnBan_domain.yaml
     path: ./ruleset/UnBan_domain.yaml
     interval: 86400
-
   BanAD_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanAD_domain.yaml
     path: ./ruleset/BanAD_domain.yaml
     interval: 86400
-
   BanProgramAD_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_domain.yaml
     path: ./ruleset/BanProgramAD_domain.yaml
     interval: 86400
-
   BanProgramAD_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_ipcidr.yaml
     path: ./ruleset/BanProgramAD_ipcidr.yaml
     interval: 86400
-
   Netflix_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_domain.yaml
     path: ./ruleset/Netflix_domain.yaml
     interval: 86400
-
   Netflix_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_ipcidr.yaml
     path: ./ruleset/Netflix_ipcidr.yaml
     interval: 86400
-
   NetEaseMusic_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_domain.yaml
     path: ./ruleset/NetEaseMusic_domain.yaml
     interval: 86400
-
   NetEaseMusic_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_ipcidr.yaml
     path: ./ruleset/NetEaseMusic_ipcidr.yaml
     interval: 86400
-
   ProxyGFWlist_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_domain.yaml
     path: ./ruleset/ProxyGFWlist_domain.yaml
     interval: 86400
-
   ProxyGFWlist_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_ipcidr.yaml
     path: ./ruleset/ProxyGFWlist_ipcidr.yaml
     interval: 86400
-
   ChinaDomain_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_domain.yaml
     path: ./ruleset/ChinaDomain_domain.yaml
     interval: 86400
-
   ChinaDomain_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_ipcidr.yaml
     path: ./ruleset/ChinaDomain_ipcidr.yaml
     interval: 86400
-
