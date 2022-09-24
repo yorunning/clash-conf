@@ -77,8 +77,9 @@ def main():
     root = {'rule-providers': dump}
 
     # 生成rule-providers文本并保存
-    rule_providers_content = yaml.dump(root, sort_keys=False)
-    rule_providers_content.replace('86400', '86400\n')
+    rule_providers_content = yaml.dump(root, sort_keys=False).replace(
+        '86400', '86400\n'
+    )
 
     with open(target_file, 'w') as fw:
         fw.write(rule_providers_content)
