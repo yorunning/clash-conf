@@ -1,57 +1,29 @@
 mode: rule
 log-level: info
-subscribe-url: ""
-
 dns:
-  nameserver:
+  default-nameserver:
     - 223.5.5.5
     - 8.8.8.8
+  nameserver:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+subscribe-url: ""
 
 proxy-providers:
-  All: &All
+  Subscribe:
     type: http
     url: "https://sub.xeton.dev/sub?target=clash&list=true&udp=true&url="
     interval: 86400
-    path: ./proxy/all.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://www.gstatic.com/generate_204
-
-  HK:
-    <<: *All
-    filter: 港|HK|Hong Kong
-
-  TW:
-    <<: *All
-    filter: 台|新北|彰化|TW|Taiwan
-
-  SG:
-    <<: *All
-    filter: 新加坡|坡|狮城|SG|Singapore
-
-  JP:
-    <<: *All
-    filter: 日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan
-
-  US:
-    <<: *All
-    filter: 美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States
 
   NetEaseMusic:
     type: http
     url: "https://sub.xeton.dev/sub?target=clash&list=true&udp=true&url=https://cdn.jsdelivr.net/gh/nameking77/Qx@main/music/wyy.txt"
     interval: 86400
-    path: ./proxy/NetEaseMusic.yaml
-    health-check:
-      enable: true
-      interval: 600
-      url: http://apm3.music.163.com
 
 proxy-groups:
   - name: 节点选择
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
     proxies:
       - 自动选择
       - 故障转移
@@ -65,7 +37,7 @@ proxy-groups:
 
   - name: NETFLIX
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
     proxies:
       - 节点选择
       - 手动切换
@@ -77,7 +49,10 @@ proxy-groups:
 
   - name: 网易云音乐
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netease_Music.png
+    url: http://apm3.music.163.com
+    interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
     use:
       - NetEaseMusic
     proxies:
@@ -85,189 +60,188 @@ proxy-groups:
 
   - name: 手动切换
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available.png
     use:
-      - All
+      - Subscribe
 
   - name: 自动选择
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
-    use:
-      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+    use:
+      - Subscribe
 
   - name: 故障转移
     type: fallback
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Bypass.png
-    use:
-      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bypass.png
+    use:
+      - Subscribe
 
   - name: 负载均衡
     type: load-balance
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Server.png
-    use:
-      - All
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Server.png
+    use:
+      - Subscribe
 
   - name: 全球直连
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Global.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     proxies:
       - DIRECT
 
   - name: 广告拦截
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Advertising.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Advertising.png
     proxies:
       - REJECT
 
   - name: 漏网之鱼
     type: select
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Final.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     proxies:
       - 节点选择
 
   - name: 香港节点
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
-    use:
-      - HK
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    use:
+      - Subscribe
+    filter: 港|🇭🇰|HK|(?i)Hong
 
   - name: 台湾节点
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Taiwan.png
-    use:
-      - TW
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    use:
+      - Subscribe
+    filter: 台|🇨🇳|🇹🇼|湾|TW|(?i)Taiwan
 
   - name: 新加坡节点
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
-    use:
-      - SG
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    use:
+      - Subscribe
+    filter: 新加坡|坡|狮城|🇸🇬|SG|(?i)Singapore
 
   - name: 日本节点
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
-    use:
-      - JP
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    use:
+      - Subscribe
+    filter: 日|🇯🇵|东京|JP|(?i)Japan
 
   - name: 美国节点
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
-    use:
-      - US
     url: http://www.gstatic.com/generate_204
     interval: 300
+    lazy: true
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    use:
+      - Subscribe
+    filter: 美|🇺🇲|US|(?i)States|American
 
 rule-providers:
   LocalAreaNetwork_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_domain.yaml
-    path: ./ruleset/LocalAreaNetwork_domain.yaml
     interval: 86400
 
   LocalAreaNetwork_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/LocalAreaNetwork_ipcidr.yaml
-    path: ./ruleset/LocalAreaNetwork_ipcidr.yaml
     interval: 86400
 
   UnBan_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/UnBan_domain.yaml
-    path: ./ruleset/UnBan_domain.yaml
     interval: 86400
 
   BanAD_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanAD_domain.yaml
-    path: ./ruleset/BanAD_domain.yaml
     interval: 86400
 
   BanProgramAD_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_domain.yaml
-    path: ./ruleset/BanProgramAD_domain.yaml
     interval: 86400
 
   BanProgramAD_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_ipcidr.yaml
-    path: ./ruleset/BanProgramAD_ipcidr.yaml
     interval: 86400
 
   Netflix_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_domain.yaml
-    path: ./ruleset/Netflix_domain.yaml
     interval: 86400
 
   Netflix_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_ipcidr.yaml
-    path: ./ruleset/Netflix_ipcidr.yaml
     interval: 86400
 
   NetEaseMusic_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_domain.yaml
-    path: ./ruleset/NetEaseMusic_domain.yaml
     interval: 86400
 
   NetEaseMusic_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_ipcidr.yaml
-    path: ./ruleset/NetEaseMusic_ipcidr.yaml
     interval: 86400
 
   ProxyGFWlist_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_domain.yaml
-    path: ./ruleset/ProxyGFWlist_domain.yaml
     interval: 86400
 
   ProxyGFWlist_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ProxyGFWlist_ipcidr.yaml
-    path: ./ruleset/ProxyGFWlist_ipcidr.yaml
     interval: 86400
 
   ChinaDomain_domain:
     type: http
     behavior: domain
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_domain.yaml
-    path: ./ruleset/ChinaDomain_domain.yaml
     interval: 86400
 
   ChinaDomain_ipcidr:
     type: http
     behavior: ipcidr
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/ChinaDomain_ipcidr.yaml
-    path: ./ruleset/ChinaDomain_ipcidr.yaml
     interval: 86400
 
 rules:

@@ -7,8 +7,7 @@ import yaml
 """
 文档地址: https://github.com/tindy2013/subconverter/blob/master/README-cn.md#%E8%A7%84%E5%88%99%E8%BD%AC%E6%8D%A2
 接口示例: https://sub.xeton.dev/getruleset?type=4&url=https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
-转换类型: 3->domain rule-provider
-        4->ipcidr rule-provider
+转换类型: 3->domain rule,4->ipcidr rule
 """
 conv_interface = 'https://sub.xeton.dev/getruleset?'
 conv_type = (3, 4)
