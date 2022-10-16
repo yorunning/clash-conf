@@ -19,7 +19,7 @@ def url_base64_encode(url):
     return base64.b64encode(url.encode('utf-8')).decode('utf-8')
 
 
-def main():
+def main(generate_rule_providers=True):
     rule_url_list = []
     rule_name_list = []
 
@@ -61,28 +61,28 @@ def main():
                 with open(os.path.join(target_dir, rule_name) + '.yaml', 'wb') as fw:
                     fw.write(response_content)
 
-    # 生成并保存rule-providers
-    dump = {}
-    for name in rule_name_list:
-        # rule-providers模板
-        dump[name] = {
-            'type': 'http',
-            'behavior': name.split('_')[-1],
-            'url': 'https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/%s.yaml'
-            % name,
-            'path': './ruleset/%s.yaml' % name,
-            'interval': 86400,
-        }
-    root = {'rule-providers': dump}
+    if generate_rule_providers:
+        # 生成并保存rule-providers
+        dump = {}
+        for name in rule_name_list:
+            # rule-providers模板
+            dump[name] = {
+                'type': 'http',
+                'behavior': name.split('_')[-1],
+                'url': 'https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/%s.yaml'
+                % name,
+                'interval': 86400,
+            }
+        root = {'rule-providers': dump}
 
-    # 生成rule-providers文本并保存
-    rule_providers_content = yaml.dump(root, sort_keys=False).replace(
-        '86400', '86400\n'
-    )
+        # 生成rule-providers文本并保存
+        rule_providers_content = yaml.dump(root, sort_keys=False).replace(
+            '86400', '86400\n'
+        )
 
-    with open(target_file, 'w') as fw:
-        fw.write(rule_providers_content)
+        with open(target_file, 'w') as fw:
+            fw.write(rule_providers_content)
 
 
 if __name__ == '__main__':
-    main()
+    main(False)
