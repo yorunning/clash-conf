@@ -1,79 +1,105 @@
-- [Clash配置](#clash配置)
-  - [subconverter订阅转换接口：](#subconverter订阅转换接口)
-  - [订阅转换配置文件地址：](#订阅转换配置文件地址)
-  - [一键订阅转换链接：](#一键订阅转换链接)
-- [Stash配置](#stash配置)
-  - [用法1.订阅转换](#用法1订阅转换)
-    - [订阅转换配置文件地址：](#订阅转换配置文件地址-1)
-    - [一键订阅转换链接：](#一键订阅转换链接-1)
-  - [用法2.配置文件导入](#用法2配置文件导入)
-    - [Stash配置文件地址：](#stash配置文件地址)
+- [Clash 配置](#clash-配置)
+    - [订阅转换配置文件](#订阅转换配置文件)
+    - [一键订阅转换链接](#一键订阅转换链接)
+- [Stash 配置](#stash-配置)
+  - [用法 1.订阅转换](#用法-1订阅转换)
+    - [订阅转换配置文件](#订阅转换配置文件-1)
+    - [一键订阅转换链接](#一键订阅转换链接-1)
+  - [用法 2.配置文件导入（推荐）](#用法-2配置文件导入推荐)
+    - [Stash 配置文件](#stash-配置文件)
+    - [填写机场订阅链接](#填写机场订阅链接)
+- [免流](#免流)
+    - [订阅转换配置文件](#订阅转换配置文件-2)
+    - [使用步骤](#使用步骤)
 - [其他资源](#其他资源)
-  - [文档](#文档)
-  - [配置](#配置)
-  - [复写](#复写)
+    - [文档](#文档)
+    - [规则](#规则)
+    - [subconverter 接口](#subconverter-接口)
+    - [在线订阅转换页面](#在线订阅转换页面)
 
+### Clash 配置
 
-### Clash配置
+##### 订阅转换配置文件
 
-#### subconverter订阅转换接口：
-[https://sub.xeton.dev/sub?](https://sub.xeton.dev/sub?)
-
-#### 订阅转换配置文件地址：
 [https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini)
 
-#### 一键订阅转换链接：
-*（修改filename & url）*
+##### 一键订阅转换链接
+
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini&filename=[sub_name]&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/clash/clash.ini&udp=true&filename=[sub_name]&url=[sub_url]
 ```
 
-### Stash配置
+_（修改 filename & url）_
 
-#### 用法1.订阅转换
+### Stash 配置
 
-##### 订阅转换配置文件地址：
+#### 用法 1.订阅转换
+
+##### 订阅转换配置文件
+
 [https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini)
 
-##### 一键订阅转换链接：
-*（修改filename & url）*
+##### 一键订阅转换链接
+
 ```
-https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&filename=[sub_name]&url=[sub_url]
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.ini&udp=true&filename=[sub_name]&url=[sub_url]
 ```
 
-#### 用法2.配置文件导入
+_（修改 filename & url）_
 
-##### Stash配置文件地址：
+#### 用法 2.配置文件导入（推荐）
+
+##### Stash 配置文件
 
 [https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash.yaml)
 
-修改*proxy-providers*项中的[**url**](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L13)
+##### 填写机场订阅链接
+
+a.机场订阅链接填写至[subscribe-url](<(https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L10)>)字段
+
+b.机场订阅链接补充至[url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L15)字段链接中的 url 参数
+
+### 免流
+
+##### 订阅转换配置文件
+
+[https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash_ml.ini](https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash_ml.ini)
+
+##### 使用步骤
+
+a.修改机场节点的混淆参数以及筛选端口([修改混淆页面](https://host.elkcloud.cf/))
+
+b.将上一步骤生成的链接进行 url 编码([url 编码页面](http://www.urlencode.com.cn/))
+
+c.拼接最终订阅转换链接，修改 filename & url
+
+```
+https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/stash/stash_ml.ini&udp=true&filename=[sub_name]&url=[sub_url]
+```
 
 ### 其他资源
 
-#### 文档
-[Clash文档](https://lancellc.gitbook.io/clash/)
+##### 文档
 
-[CFW文档](https://docs.cfw.lbyczf.com/)
+[Clash 文档](https://lancellc.gitbook.io/clash/)|
+[CFW 文档](https://docs.cfw.lbyczf.com/)|
+[Stash 文档](https://stash.wiki/)|
+[subconverter 文档](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
 
-[Stash文档](https://stash.wiki/)
+##### 规则
 
-[subconverter文档](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
-
-#### 配置
-[ACL4SSR规则碎片](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash)
-
-[ACL4SSR订阅转换页面](https://acl4ssr-sub.github.io/)
-
-[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)
-
+[ACL4SSR 规则](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash)|
+[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)|
 [Infatuation-Fei/rule](https://github.com/Infatuation-Fei/rule)
 
-#### 复写
-[iRingo ios增强](https://github.com/VirgilClyne/iRingo)
+##### subconverter 接口
 
-[blackmatrix7/ios_rule_script](https://github.com/blackmatrix7/ios_rule_script)
+subconverter 作者提供：[https://sub.xeton.dev/sub?](https://sub.xeton.dev/sub?)
 
-[Tartarus2014/Surge-Script](https://github.com/Tartarus2014/Surge-Script)
+sub-web 作者提供：[https://api.wcc.best/sub?](https://api.wcc.best/sub?)
 
-[githubdulong/Script](https://github.com/githubdulong/Script)
+##### 在线订阅转换页面
+
+sub-web 作者提供：[https://sub-web.netlify.app/](https://sub-web.netlify.app/)
+
+ACL4SSR 作者提供：[https://acl4ssr-sub.github.io/](https://acl4ssr-sub.github.io/)
