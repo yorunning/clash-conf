@@ -57,7 +57,7 @@ _（修改 filename & url）_
 
 a.下载配置文件
 
-b.机场订阅链接填写至以下两处锚点（点击链接查看锚点）
+b.将机场订阅链接填写至配置文件以下两处（点击链接跳转至锚点）
 
 [subscribe-url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L10)字段
 
