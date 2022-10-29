@@ -57,9 +57,11 @@ _（修改 filename & url）_
 
 a.下载配置文件
 
-b.机场订阅链接填写至[subscribe-url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L10)字段
+b.机场订阅链接填写至以下两处锚点（点击链接查看锚点）
 
-c.机场订阅链接补充至[url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L15)字段链接中的 url 参数
+[subscribe-url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L10)字段
+
+[url](https://github.com/yorunning/clash_conf/blob/main/stash/stash.yaml#L15)字段链接末尾
 
 ### 免流
 
