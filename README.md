@@ -85,15 +85,15 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 
 ##### 文档
 
-[Clash 文档](https://lancellc.gitbook.io/clash/)|
-[CFW 文档](https://docs.cfw.lbyczf.com/)|
-[Stash 文档](https://stash.wiki/)|
+[Clash 文档](https://lancellc.gitbook.io/clash/) |
+[CFW 文档](https://docs.cfw.lbyczf.com/) |
+[Stash 文档](https://stash.wiki/) |
 [subconverter 文档](https://github.com/tindy2013/subconverter/blob/master/README-cn.md)
 
 ##### 规则
 
-[ACL4SSR 规则](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash)|
-[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)|
+[ACL4SSR 规则](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash) |
+[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) |
 [Infatuation-Fei/rule](https://github.com/Infatuation-Fei/rule)
 
 ##### subconverter 接口
