@@ -47,12 +47,12 @@ proxy-groups:
       - 日本节点
       - 美国节点
 
-  - name: 网易云音乐
+  - name: 网易云解锁
     type: select
     url: http://apm3.music.163.com
     interval: 300
     lazy: true
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music.png
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music_Unlock.png
     use:
       - NetEaseMusic
     proxies:
