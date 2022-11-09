@@ -35,18 +35,6 @@ proxy-groups:
       - 日本节点
       - 美国节点
 
-  - name: NETFLIX
-    type: select
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
-    proxies:
-      - 节点选择
-      - 手动切换
-      - 香港节点
-      - 台湾节点
-      - 新加坡节点
-      - 日本节点
-      - 美国节点
-
   - name: 网易云解锁
     type: select
     url: http://apm3.music.163.com
@@ -196,18 +184,6 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/BanProgramAD_ipcidr.yaml
     interval: 86400
 
-  Netflix_domain:
-    type: http
-    behavior: domain
-    url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_domain.yaml
-    interval: 86400
-
-  Netflix_ipcidr:
-    type: http
-    behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/Netflix_ipcidr.yaml
-    interval: 86400
-
   NetEaseMusic_domain:
     type: http
     behavior: domain
@@ -251,8 +227,6 @@ rules:
   - RULE-SET,BanAD_domain,广告拦截
   - RULE-SET,BanProgramAD_domain,广告拦截
   - RULE-SET,BanProgramAD_ipcidr,广告拦截
-  - RULE-SET,Netflix_domain,NETFLIX
-  - RULE-SET,Netflix_ipcidr,NETFLIX
   - RULE-SET,NetEaseMusic_domain,网易云音乐
   - RULE-SET,NetEaseMusic_ipcidr,网易云音乐
   - RULE-SET,ProxyGFWlist_domain,节点选择
