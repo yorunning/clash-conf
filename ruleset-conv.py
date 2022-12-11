@@ -70,7 +70,7 @@ def main(generate_rule_providers: bool = True) -> None:
             # 跳过内容为空的ruleset
             if response_content != b"payload:\n  - '0.0.0.0/32'":
                 # 拼接ruleset name
-                ruleset_name: str = "_".join([ruleset_name_prefix, ruleset_name_suffix])
+                ruleset_name: str = '_'.join([ruleset_name_prefix, ruleset_name_suffix])
                 ruleset_name_list.append(ruleset_name)
 
                 # 保存ruleset content
