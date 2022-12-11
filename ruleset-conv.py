@@ -9,8 +9,9 @@ import yaml
 """
 文档地址: https://github.com/tindy2013/subconverter/blob/master/README-cn.md#%E8%A7%84%E5%88
 %99%E8%BD%AC%E6%8D%A2
-接口示例: https://sub.xeton.dev/getruleset?type=4&url=https://raw.githubusercontent.com/ACL4
-SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
+接口示例: https://sub.xeton.dev/getruleset?type=3&url=https://sub.xeton.dev/getruleset?type=
+3&url=aHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L2doL0FDTDRTU1IvQUNMNFNTUkBtYXN0ZXIvQ2xhc2gvTG9jYW
+xBcmVhTmV0d29yay5saXN0
 转换类型: 3->domain rule, 4->ipcidr rule
 """
 CONV_INTERFACE: Final[str] = 'https://sub.xeton.dev/getruleset?'
