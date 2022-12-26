@@ -241,8 +241,8 @@ rules:
   - RULE-SET,BanAD_domain,广告拦截
   - RULE-SET,BanProgramAD_domain,广告拦截
   - RULE-SET,BanProgramAD_ipcidr,广告拦截
-  - RULE-SET,NetEaseMusic_domain,网易云音乐
-  - RULE-SET,NetEaseMusic_ipcidr,网易云音乐
+  - RULE-SET,NetEaseMusic_domain,网易云解锁
+  - RULE-SET,NetEaseMusic_ipcidr,网易云解锁
   - RULE-SET,ProxyGFWlist_domain,节点选择
   - RULE-SET,ProxyGFWlist_ipcidr,节点选择
   - RULE-SET,ChinaDomain_domain,全球直连
