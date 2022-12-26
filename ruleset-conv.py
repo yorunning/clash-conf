@@ -95,6 +95,7 @@ def main(generate_rule_providers: bool = True) -> None:
                         '.yaml',
                     ]
                 ),
+                'path': './ruleset/{}.yaml'.format(ruleset_name),
                 'interval': 86400,
             }
 
