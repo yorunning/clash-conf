@@ -8,6 +8,7 @@ payload:
   - 'instant.arubanetworks.com'
   - 'setmeup.arubanetworks.com'
   - 'router.asus.com'
+  - 'www.asusrouter.com'
   - '+.hiwifi.com'
   - '+.leike.cc'
   - '+.miwifi.com'
@@ -20,3 +21,4 @@ payload:
   - '+.tendawifi.com'
   - '+.zte.home'
   - '+.tplogin.cn'
+  - '+.wifi.cmcc'
