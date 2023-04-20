@@ -16,12 +16,6 @@ proxy-providers:
     path: ./proxy/Subscribe.yaml
     interval: 86400
 
-  NetEaseMusic:
-    type: http
-    url: "https://sub.xeton.dev/sub?target=clash&list=true&udp=true&url=https://cdn.jsdelivr.net/gh/nameking77/Qx@main/music/wyy.txt"
-    path: ./proxy/NetEaseMusic.yaml
-    interval: 86400
-
 proxy-groups:
   - name: 节点选择
     type: select
@@ -36,16 +30,6 @@ proxy-groups:
       - 新加坡节点
       - 日本节点
       - 美国节点
-
-  - name: 网易云解锁
-    type: select
-    url: http://apm3.music.163.com
-    interval: 300
-    lazy: true
-    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netease_Music_Unlock.png
-    use:
-      - NetEaseMusic
-    proxies:
       - DIRECT
 
   - name: 手动切换
@@ -192,20 +176,6 @@ rule-providers:
     path: ./ruleset/BanProgramAD_ipcidr.yaml
     interval: 86400
 
-  NetEaseMusic_domain:
-    type: http
-    behavior: domain
-    url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_domain.yaml
-    path: ./ruleset/NetEaseMusic_domain.yaml
-    interval: 86400
-
-  NetEaseMusic_ipcidr:
-    type: http
-    behavior: ipcidr
-    url: https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/NetEaseMusic_ipcidr.yaml
-    path: ./ruleset/NetEaseMusic_ipcidr.yaml
-    interval: 86400
-
   ProxyGFWlist_domain:
     type: http
     behavior: domain
@@ -241,8 +211,6 @@ rules:
   - RULE-SET,BanAD_domain,广告拦截
   - RULE-SET,BanProgramAD_domain,广告拦截
   - RULE-SET,BanProgramAD_ipcidr,广告拦截
-  - RULE-SET,NetEaseMusic_domain,网易云解锁
-  - RULE-SET,NetEaseMusic_ipcidr,网易云解锁
   - RULE-SET,ProxyGFWlist_domain,节点选择
   - RULE-SET,ProxyGFWlist_ipcidr,节点选择
   - RULE-SET,ChinaDomain_domain,全球直连
