@@ -16,8 +16,8 @@ xBcmVhTmV0d29yay5saXN0
 """
 CONV_INTERFACE: Final[str] = 'https://sub.xeton.dev/getruleset?'
 CONV_TYPE: Final[tuple[int, int]] = (3, 4)
-TARGET_DIR: Final[str] = './rule/'
-TARGET_FILE: Final[str] = './rule-providers.yaml'
+TARGET_DIR: Final[str] = '../rule/'
+TARGET_FILE: Final[str] = '../config/rule-providers.yaml'
 
 
 def init(func: Callable) -> Callable:
