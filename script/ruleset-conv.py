@@ -14,10 +14,22 @@ import yaml
 xBcmVhTmV0d29yay5saXN0
 转换类型: 3->domain rule, 4->ipcidr rule
 """
+
+
+def get_abspath(path: str) -> str:
+    current_dirpath: str = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(current_dirpath, path)
+
+
+def url_base64_encode(url: str) -> str:
+    """将string格式的url编码为base64格式的url"""
+    return base64.b64encode(url.encode('utf-8')).decode('utf-8')
+
+
 CONV_INTERFACE: Final[str] = 'https://sub.xeton.dev/getruleset?'
 CONV_TYPE: Final[tuple[int, int]] = (3, 4)
-TARGET_DIR: Final[str] = '../rule/'
-TARGET_FILE: Final[str] = '../config/rule-providers.yaml'
+TARGET_DIR: Final[str] = get_abspath('../rule/')
+TARGET_FILE: Final[str] = get_abspath('./rule-providers.yaml')
 
 
 def init(func: Callable) -> Callable:
@@ -39,18 +51,13 @@ def init(func: Callable) -> Callable:
     return wrapper
 
 
-def url_base64_encode(url: str) -> str:
-    """将string格式的url编码为base64格式的url"""
-    return base64.b64encode(url.encode('utf-8')).decode('utf-8')
-
-
 @init
 def main(generate_rule_providers: bool = True) -> None:
     ruleset_url_list: list[str] = []
     ruleset_name_list: list[str] = []
 
     # 从ruleset-url.txt读取ruleset url
-    with open('./ruleset-url.txt', 'r') as fr:
+    with open(get_abspath('./ruleset-url.txt'), 'r') as fr:
         ruleset_url_list.extend(map(lambda x: x.rstrip('\n'), fr.readlines()))
 
     # 通过转换接口生成ruleset content并保存到TARGET_DIR
@@ -75,7 +82,9 @@ def main(generate_rule_providers: bool = True) -> None:
                 ruleset_name_list.append(ruleset_name)
 
                 # 保存ruleset content
-                with open(os.path.join(TARGET_DIR, ruleset_name) + '.yaml', 'wb') as fw:
+                with open(
+                    os.path.join(TARGET_DIR, ruleset_name) + '.yaml', 'wb'
+                ) as fw:
                     fw.write(response_content)
 
     # 生成rule-providers并保存到TARGET_FILE
@@ -109,4 +118,7 @@ def main(generate_rule_providers: bool = True) -> None:
 
 
 if __name__ == '__main__':
-    main(False)
+    main()
+    # p: str = os.path.dirname(os.path.abspath(__file__))
+    # print(p)
+    # print(os.path.abspath(get_abspath('../rule')))

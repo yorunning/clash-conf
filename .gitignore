@@ -1,4 +1,6 @@
-/node_modules
-/.next/
-/.mypy_cache
+node_modules/
+.next/
+.mypy_cache/
+
+script/rule-providers.yaml
 own/
