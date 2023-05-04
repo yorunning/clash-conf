@@ -82,6 +82,7 @@ proxy-groups:
     icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
     proxies:
       - 节点选择
+      - DIRECT
 
   - name: 香港节点
     type: url-test
