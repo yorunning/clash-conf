@@ -1,3 +1,45 @@
+mode: rule
+log-level: info
+
+proxies:
+  - name: Cloudflare
+    type: wireguard
+    server: engage.nanocat.me
+    port: 2408
+    ip: 172.16.0.2
+    ipv6: 2606:4700:110:818f:2d7a:4302:c4b:8fa
+    private-key: wHlZi0OdWr3sq+NRg9Yq4+usNUgigbfIe4FptgGtsmg=
+    public-key: bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=
+    dns: [162.159.36.1, 2606:4700:4700::1111]
+    mtu: 1280
+    reserved: [133,97,9]
+    keepalive: 45
+
+proxy-groups:
+  - name: 节点选择
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Rocket.png
+    proxies:
+      - Cloudflare
+
+  - name: 全球直连
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
+    proxies:
+      - DIRECT
+
+  - name: 广告拦截
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Advertising.png
+    proxies:
+      - REJECT
+
+  - name: 漏网之鱼
+    type: select
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    proxies:
+      - 节点选择
+
 rule-providers:
   LocalAreaNetwork_domain:
     type: http
@@ -69,3 +111,16 @@ rule-providers:
     path: ./ruleset/ChinaDomain_ipcidr.yaml
     interval: 86400
 
+rules:
+  - RULE-SET,LocalAreaNetwork_domain,全球直连
+  - RULE-SET,LocalAreaNetwork_ipcidr,全球直连
+  - RULE-SET,UnBan_domain,全球直连
+  - RULE-SET,BanAD_domain,广告拦截
+  - RULE-SET,BanProgramAD_domain,广告拦截
+  - RULE-SET,BanProgramAD_ipcidr,广告拦截
+  - RULE-SET,ProxyGFWlist_domain,节点选择
+  - RULE-SET,ProxyGFWlist_ipcidr,节点选择
+  - RULE-SET,ChinaDomain_domain,全球直连
+  - RULE-SET,ChinaDomain_ipcidr,全球直连
+  - GEOIP,CN,全球直连
+  - MATCH,漏网之鱼
