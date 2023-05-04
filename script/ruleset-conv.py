@@ -82,9 +82,7 @@ def main(generate_rule_providers: bool = True) -> None:
                 ruleset_name_list.append(ruleset_name)
 
                 # 保存ruleset content
-                with open(
-                    os.path.join(TARGET_DIR, ruleset_name) + '.yaml', 'wb'
-                ) as fw:
+                with open(os.path.join(TARGET_DIR, ruleset_name) + '.yaml', 'wb') as fw:
                     fw.write(response_content)
 
     # 生成rule-providers并保存到TARGET_FILE
@@ -119,6 +117,3 @@ def main(generate_rule_providers: bool = True) -> None:
 
 if __name__ == '__main__':
     main()
-    # p: str = os.path.dirname(os.path.abspath(__file__))
-    # print(p)
-    # print(os.path.abspath(get_abspath('../rule')))
