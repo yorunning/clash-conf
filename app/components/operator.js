@@ -7,7 +7,7 @@ import { useState, useMemo } from "react";
 const radioItems = [
   { value: "clash", text: "Clash" },
   { value: "stash", text: "Stash" },
-  { value: "stash_ml", text: "Stash (zero-rated)" },
+  { value: "stash-ml", text: "Stash (zero-rated)" },
 ];
 
 export default function Operator() {
@@ -19,7 +19,7 @@ export default function Operator() {
   const { copy } = useClipboard();
 
   const resultLink = useMemo(() => {
-    const baseUrl = `https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/${convertType}/${convertType}.ini&udp=true`;
+    const baseUrl = `https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/config/${convertType}.ini&udp=true`;
 
     if (subLink !== "" && configName !== "") {
       return `${baseUrl}&filename=${configName}&url=${subLink}`;
