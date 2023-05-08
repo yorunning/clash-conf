@@ -43,7 +43,7 @@ export default function Content() {
 
   function importHandler() {
     if (resultLink) {
-      window.location.href = `stash://install-config?url=${encodeURIComponent(
+      window.location.href = `clash://install-config?url=${encodeURIComponent(
         resultLink
       )}`;
     } else {
