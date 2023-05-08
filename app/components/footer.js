@@ -1,19 +1,17 @@
 "use client";
 import Image from "next/image";
-import { Text, User, Grid } from "@geist-ui/core";
+import { Text, User } from "@geist-ui/core";
 
 export default function Footer() {
   return (
-    <Grid.Container alignItems="center" className="footer">
-      <Grid sm xs={24}>
-        <Text font="14px" mr=".5rem">
-          Powered by
-        </Text>
-        <Image src="/next.svg" width={80} height={44} alt="Next.js" />
-      </Grid>
+    <div className="footer">
+      <div className="footer-left">
+        <Text>Powered by</Text>
+        <Image src="/next.svg" width={80} height={48} alt="Next.js" />
+      </div>
 
-      <Grid sm xs={0} justify="flex-end">
-        <Text font="14px">Developed by</Text>
+      <div className="footer-right">
+        <Text>Developed by</Text>
         <User
           src="https://avatars.githubusercontent.com/u/25226871?v=4"
           name="Yorun"
@@ -21,7 +19,7 @@ export default function Footer() {
         >
           <User.Link href="https://github.com/yorunning">@yorunning</User.Link>
         </User>
-      </Grid>
-    </Grid.Container>
+      </div>
+    </div>
   );
 }

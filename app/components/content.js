@@ -1,8 +1,8 @@
 "use client";
-import { Text, Button, Input, Textarea, Radio, Grid } from "@geist-ui/core";
+import { useState, useMemo } from "react";
+import { Text, Button, Input, Textarea, Radio } from "@geist-ui/core";
 import { useToasts, useClipboard } from "@geist-ui/core";
 import { Copy, ExternalLink } from "@geist-ui/icons";
-import { useState, useMemo } from "react";
 
 const radioItems = [
   { value: "clash", text: "Clash" },
@@ -10,7 +10,12 @@ const radioItems = [
   { value: "stash-ml", text: "Stash (zero-rated)" },
 ];
 
-export default function Operator() {
+const promptMessage = {
+  success: "🎉 Copy successful!",
+  error: "🚧 Empty values in input.",
+};
+
+export default function Content() {
   const [convertType, setConvertType] = useState("clash");
   const [subLink, setSubLink] = useState("");
   const [configName, setConfigName] = useState("");
@@ -30,9 +35,9 @@ export default function Operator() {
   function copyHandler() {
     if (resultLink) {
       copy(resultLink);
-      setToast({ text: "🎉 Copy successful!" });
+      setToast({ text: promptMessage.success });
     } else {
-      setToast({ text: "🚧 Empty values in input." });
+      setToast({ text: promptMessage.error });
     }
   }
 
@@ -42,16 +47,14 @@ export default function Operator() {
         resultLink
       )}`;
     } else {
-      setToast({ text: "🚧 Empty values in input." });
+      setToast({ text: promptMessage.error });
     }
   }
 
   return (
-    <Grid.Container alignContent="center" className="operator">
-      <Grid sm={24} xs={24} direction="column" justify="center">
-        <Text font="14px" mt={0} style={{ color: "#444" }}>
-          Conversion type
-        </Text>
+    <div className="content">
+      <div>
+        <Text>Conversion type</Text>
         <Radio.Group
           useRow
           value={convertType}
@@ -65,11 +68,12 @@ export default function Operator() {
             </Radio>
           ))}
         </Radio.Group>
-      </Grid>
+      </div>
 
-      <Grid sm={24} xs={24}>
+      <div>
         <Input
-          w="100%"
+          width="100%"
+          font="1rem"
           placeholder="Please enter"
           clearable
           value={subLink}
@@ -79,11 +83,12 @@ export default function Operator() {
         >
           Subscription link
         </Input>
-      </Grid>
+      </div>
 
-      <Grid sm={24} xs={24}>
+      <div>
         <Input
-          w="100%"
+          width="100%"
+          font="1rem"
           placeholder="Please enter"
           clearable
           value={configName}
@@ -93,21 +98,22 @@ export default function Operator() {
         >
           Configuration name
         </Input>
-      </Grid>
+      </div>
 
-      <Grid sm={24} xs={24} direction="column" justify="center">
-        <Text font="14px" mt={0} mb={"7px"} style={{ color: "#444" }}>
-          Result link
-        </Text>
+      <div>
+        <Text>Result link</Text>
         <Textarea
+          width="100%"
+          height="5rem"
+          font="1rem"
           placeholder="Read-only text box, waiting for input."
           readOnly
           type={resultLink !== "" ? "success" : "default"}
           value={resultLink}
         />
-      </Grid>
+      </div>
 
-      <Grid sm={24} xs={24} justify="center" alignItems="center">
+      <div className="button-group">
         <Button
           type="secondary"
           shadow
@@ -124,7 +130,7 @@ export default function Operator() {
         >
           Import to client
         </Button>
-      </Grid>
-    </Grid.Container>
+      </div>
+    </div>
   );
 }

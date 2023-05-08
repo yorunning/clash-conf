@@ -1,31 +1,29 @@
 "use client";
-import { Text, Link, Grid } from "@geist-ui/core";
+import { Text, Link } from "@geist-ui/core";
 import { Github } from "@geist-ui/icons";
+import siteinfo from "../siteinfo.json";
 
 export default function Header() {
   return (
-    <Grid.Container className="header">
-      <Grid sm={24} xs={24}>
-        <Text h2 mb={0}>
-          Subscription Converter
-        </Text>
-      </Grid>
+    <div className="header">
+      <div className="title">
+        <Text h2>{siteinfo.title}</Text>
+      </div>
 
-      <Grid sm={12} xs={24}>
-        <Text>Quickly convert Clash & Stash configuration files.</Text>
-      </Grid>
+      <div>
+        <Text>{siteinfo.description}</Text>
+      </div>
 
-      <Grid sm={12} xs={0} justify="flex-end">
+      <div className="view-code">
         <Link
           href="https://github.com/yorunning/clash_conf"
           target="_blank"
           underline
-          className="header-link"
         >
           View source code
           <Github size="1rem" />
         </Link>
-      </Grid>
-    </Grid.Container>
+      </div>
+    </div>
   );
 }

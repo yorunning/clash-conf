@@ -1,9 +1,10 @@
-import { Providers } from "./providers";
+import Providers from "./providers";
+import siteinfo from "./siteinfo.json";
 import "./globals.scss";
 
 export const metadata = {
-  title: "Subscription Converter",
-  description: "Quickly convert Clash & Stash configuration files.",
+  title: siteinfo.title,
+  description: siteinfo.description,
 };
 
 export default function RootLayout({ children }) {
