@@ -95,8 +95,7 @@ https://sub.xeton.dev/sub?target=clash&config=https://cdn.jsdelivr.net/gh/yorunn
 ##### 规则
 
 [ACL4SSR 规则](https://github.com/ACL4SSR/ACL4SSR/tree/master/Clash) |
-[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules) |
-[Infatuation-Fei/rule](https://github.com/Infatuation-Fei/rule)
+[Loyalsoldier/clash-rules](https://github.com/Loyalsoldier/clash-rules)
 
 ##### subconverter 接口
 
