@@ -6030,6 +6030,8 @@ payload:
   - '+.line.me'
   - '+.line.naver.jp'
   - '+.nhncorp.jp'
+  - 'cloud.oracle.com'
+  - '+.oraclecloud.com'
   - '+.livefilestore.com'
   - '+.oneclient.sfx.ms'
   - '+.onedrive.com'
