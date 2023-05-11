@@ -24,20 +24,19 @@ export default function Content() {
   const { copy } = useClipboard();
 
   const resultLink = useMemo(() => {
-    const baseUrl =
-      "https://sub.xeton.dev/sub?target=clash&udp=true" +
-      "&config=https://cdn.jsdelivr.net/gh/yorunning/clash-conf@main/config/" +
-      `${convertType}.ini`;
-
-    const ensureSubLink =
-      convertType === "stash-ml"
-        ? encodeURIComponent(
-            `https://cghost.elkcloud.cf/&&${subLink}&&puui.qpic.cn&&&&80`
-          )
-        : subLink;
-
     if (subLink !== "" && configName !== "") {
-      return `${baseUrl}&filename=${configName}&url=${ensureSubLink}`;
+      const baseUrl =
+        "https://sub.xeton.dev/sub?target=clash&udp=true" +
+        "&config=https://cdn.jsdelivr.net/gh/yorunning/clash-conf@main/config/" +
+        `${convertType}.ini`;
+
+      const processedSubLink =
+        convertType === "stash-ml"
+          ? encodeURIComponent(
+              `https://cghost.elkcloud.cf/&&${subLink}&&puui.qpic.cn&&&&80`
+            )
+          : subLink;
+      return `${baseUrl}&filename=${configName}&url=${processedSubLink}`;
     }
     return "";
   }, [convertType, subLink, configName]);
@@ -86,6 +85,7 @@ export default function Content() {
           font="1rem"
           placeholder="Please enter"
           clearable
+          type={subLink !== "" ? "success" : "default"}
           value={subLink}
           onChange={(e) => {
             setSubLink(e.target.value);
@@ -101,6 +101,7 @@ export default function Content() {
           font="1rem"
           placeholder="Please enter"
           clearable
+          type={configName !== "" ? "success" : "default"}
           value={configName}
           onChange={(e) => {
             setConfigName(e.target.value);
