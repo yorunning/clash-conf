@@ -85,7 +85,7 @@ export default function Content() {
           font="1rem"
           placeholder="Please enter"
           clearable
-          type={subLink !== "" ? "success" : "default"}
+          type={subLink !== "" ? "secondary" : "default"}
           value={subLink}
           onChange={(e) => {
             setSubLink(e.target.value);
@@ -101,7 +101,7 @@ export default function Content() {
           font="1rem"
           placeholder="Please enter"
           clearable
-          type={configName !== "" ? "success" : "default"}
+          type={configName !== "" ? "secondary" : "default"}
           value={configName}
           onChange={(e) => {
             setConfigName(e.target.value);
