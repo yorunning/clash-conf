@@ -46,6 +46,7 @@ body {
     .view-code {
       display: flex;
       justify-content: flex-end;
+      align-items: center;
 
       @include mobile {
         display: none;
