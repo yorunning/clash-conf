@@ -1,4 +1,3 @@
-"use client";
 import { Text, Link } from "@geist-ui/core";
 import { Github } from "@geist-ui/icons";
 import siteinfo from "../siteinfo.json";

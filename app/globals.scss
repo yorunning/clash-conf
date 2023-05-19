@@ -97,6 +97,25 @@ body {
       box-sizing: border-box;
     }
 
+    .result-link {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-bottom: 0;
+        }
+
+        svg {
+          margin-left: 0.5rem;
+        }
+      }
+    }
+
     .button-group {
       display: flex;
       justify-content: center;

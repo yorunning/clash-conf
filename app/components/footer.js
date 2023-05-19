@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { Text, User } from "@geist-ui/core";
 

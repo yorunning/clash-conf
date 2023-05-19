@@ -1,4 +1,5 @@
 "use client";
+
 import { useServerInsertedHTML } from "next/navigation";
 import { GeistProvider, CssBaseline } from "@geist-ui/core";
 

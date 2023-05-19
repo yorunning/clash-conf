@@ -1,8 +1,9 @@
-"use client";
 import { useState, useMemo } from "react";
-import { Text, Button, Input, Textarea, Radio } from "@geist-ui/core";
+import { Text, Button, Input, Textarea, Radio, Toggle } from "@geist-ui/core";
 import { useToasts, useClipboard } from "@geist-ui/core";
-import { Copy, ExternalLink } from "@geist-ui/icons";
+import { Copy, ExternalLink, Link2 } from "@geist-ui/icons";
+
+import { generateRawLink, generateShortLink, processSubLink } from "../utils";
 
 const radioItems = [
   { value: "clash", text: "Clash" },
@@ -19,27 +20,20 @@ export default function Content() {
   const [convertType, setConvertType] = useState("clash");
   const [subLink, setSubLink] = useState("");
   const [configName, setConfigName] = useState("");
-
-  const { setToast } = useToasts();
-  const { copy } = useClipboard();
+  const [enableShortLink, setEnableShortLink] = useState(true);
 
   const resultLink = useMemo(() => {
     if (subLink !== "" && configName !== "") {
-      const baseUrl =
-        "https://sub.xeton.dev/sub?target=clash&udp=true" +
-        "&config=https://cdn.jsdelivr.net/gh/yorunning/clash-conf@main/config/" +
-        `${convertType}.ini`;
-
-      const processedSubLink =
-        convertType === "stash-ml"
-          ? encodeURIComponent(
-              `https://cghost.elkcloud.cf/&&${subLink}&&puui.qpic.cn&&&&80`
-            )
-          : subLink;
-      return `${baseUrl}&filename=${configName}&url=${processedSubLink}`;
+      const url = processSubLink(convertType, subLink);
+      return enableShortLink
+        ? generateShortLink(convertType, configName, url)
+        : generateRawLink(convertType, configName, url);
     }
     return "";
-  }, [convertType, subLink, configName]);
+  }, [convertType, subLink, configName, enableShortLink]);
+
+  const { setToast } = useToasts();
+  const { copy } = useClipboard();
 
   function copyHandler() {
     if (resultLink) {
@@ -112,7 +106,21 @@ export default function Content() {
       </div>
 
       <div>
-        <Text>Result link</Text>
+        <div className="result-link">
+          <div>
+            <Text>Result link</Text>
+            <Link2 color={enableShortLink ? "#0070f3" : "#444"} size="1.3rem" />
+          </div>
+          <Toggle
+            initialChecked
+            scale={1.5}
+            checked={enableShortLink}
+            onChange={(e) => {
+              setEnableShortLink(e.target.checked);
+            }}
+          />
+        </div>
+
         <Textarea
           width="100%"
           height="5rem"
