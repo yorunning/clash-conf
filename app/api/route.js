@@ -3,7 +3,8 @@ import { generateRawLink } from "../utils";
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
-  const { target, filename, url } = Object.fromEntries(searchParams.entries());
+  const { type, filename, url } = Object.fromEntries(searchParams.entries());
 
-  redirect(generateRawLink(target, filename, url));
+  // console.log(generateRawLink(type, filename, url));
+  redirect(generateRawLink(type, filename, url));
 }

@@ -3,7 +3,7 @@ import { Text, Button, Input, Textarea, Radio, Toggle } from "@geist-ui/core";
 import { useToasts, useClipboard } from "@geist-ui/core";
 import { Copy, ExternalLink, Link2 } from "@geist-ui/icons";
 
-import { generateRawLink, generateShortLink, processSubLink } from "../utils";
+import { generateRawLink, generateShortLink } from "../utils";
 
 const radioItems = [
   { value: "clash", text: "Clash" },
@@ -24,10 +24,9 @@ export default function Content() {
 
   const resultLink = useMemo(() => {
     if (subLink !== "" && configName !== "") {
-      const url = processSubLink(convertType, subLink);
       return enableShortLink
-        ? generateShortLink(convertType, configName, url)
-        : generateRawLink(convertType, configName, url);
+        ? generateShortLink(convertType, configName, subLink)
+        : generateRawLink(convertType, configName, subLink);
     }
     return "";
   }, [convertType, subLink, configName, enableShortLink]);
