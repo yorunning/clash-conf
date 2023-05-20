@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { generateRawLink } from "../utils";
+
+import { generateRawLink } from "@/lib/utils";
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);

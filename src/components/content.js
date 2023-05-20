@@ -3,7 +3,7 @@ import { Text, Button, Input, Textarea, Radio, Toggle } from "@geist-ui/core";
 import { useToasts, useClipboard } from "@geist-ui/core";
 import { Copy, ExternalLink, Link2 } from "@geist-ui/icons";
 
-import { generateRawLink, generateShortLink } from "../utils";
+import { generateRawLink, generateShortLink } from "@/lib/utils";
 
 const radioItems = [
   { value: "clash", text: "Clash" },
@@ -34,7 +34,7 @@ export default function Content() {
   const { setToast } = useToasts();
   const { copy } = useClipboard();
 
-  function copyHandler() {
+  function handleCopyLink() {
     if (resultLink) {
       copy(resultLink);
       setToast({ text: promptMessage.success });
@@ -43,7 +43,7 @@ export default function Content() {
     }
   }
 
-  function importHandler() {
+  function handleImportToClient() {
     if (resultLink) {
       window.location.href = `clash://install-config?url=${encodeURIComponent(
         resultLink
@@ -136,7 +136,7 @@ export default function Content() {
           type="secondary"
           shadow
           iconRight={<Copy />}
-          onClick={copyHandler}
+          onClick={handleCopyLink}
         >
           Copy link
         </Button>
@@ -144,7 +144,7 @@ export default function Content() {
           type="success"
           shadow
           iconRight={<ExternalLink />}
-          onClick={importHandler}
+          onClick={handleImportToClient}
         >
           Import to client
         </Button>

@@ -1,6 +1,7 @@
 import { Text, Link } from "@geist-ui/core";
 import { Github } from "@geist-ui/icons";
-import siteinfo from "../siteinfo.json";
+
+import siteinfo from "@/app/siteinfo.json";
 
 export default function Header() {
   return (
