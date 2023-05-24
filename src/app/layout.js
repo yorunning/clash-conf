@@ -1,6 +1,6 @@
 import Providers from "./providers";
 import siteinfo from "./siteinfo.json";
-import "./globals.scss";
+import "@/styles/globals.scss";
 
 export const metadata = {
   title: siteinfo.title,
