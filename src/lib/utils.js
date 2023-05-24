@@ -1,7 +1,8 @@
 function processSubLink(convertType, subLink) {
   return convertType === "stash-ml"
     ? encodeURIComponent(
-        `https://cghost.elkcloud.cf/&&${subLink}&&puui.qpic.cn&&&&80`
+        "https://host.elkcloud.top/update_v2ray_subscribe.php?" +
+          `subscribe=${subLink}&&host=puui.qpic.cn&&port=80`
       )
     : subLink;
 }

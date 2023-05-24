@@ -45,9 +45,8 @@ export default function Content() {
 
   function handleImportToClient() {
     if (resultLink) {
-      window.location.href = `clash://install-config?url=${encodeURIComponent(
-        resultLink
-      )}`;
+      window.location.href =
+        "clash://install-config?url=" + encodeURIComponent(resultLink);
     } else {
       setToast({ text: promptMessage.error });
     }
