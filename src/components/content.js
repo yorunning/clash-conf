@@ -1,5 +1,13 @@
 import { useState, useMemo } from "react";
-import { Text, Button, Input, Textarea, Radio, Toggle } from "@geist-ui/core";
+import {
+  Text,
+  Button,
+  Input,
+  Textarea,
+  Radio,
+  Toggle,
+  Tooltip,
+} from "@geist-ui/core";
 import { useToasts, useClipboard } from "@geist-ui/core";
 import { Copy, ExternalLink, Link2 } from "@geist-ui/icons";
 
@@ -107,7 +115,12 @@ export default function Content() {
         <div className="result-link">
           <div>
             <Text>Result link</Text>
-            <Link2 color={enableShortLink ? "#0070f3" : "#444"} size="1.3rem" />
+            <Tooltip text="Enable / Disable short link." placement="topStart">
+              <Link2
+                color={enableShortLink ? "#0070f3" : "#444"}
+                size="1.3rem"
+              />
+            </Tooltip>
           </div>
           <Toggle
             initialChecked
