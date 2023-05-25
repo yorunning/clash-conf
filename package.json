@@ -13,11 +13,11 @@
     "@geist-ui/icons": "^1.0.2",
     "next": "13.4.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "sass": "^1.62.1"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2"
+    "eslint-config-next": "13.4.2",
+    "sass": "^1.62.1"
   }
 }
