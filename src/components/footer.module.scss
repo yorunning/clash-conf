@@ -1,0 +1,32 @@
+@import "@/styles/shared.scss";
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  @include mobile {
+    flex: 1;
+    justify-content: center;
+    align-items: flex-end;
+  }
+
+  & > div {
+    display: flex;
+
+    p {
+      font-size: 14px;
+    }
+
+    &.footer-left p {
+      margin-right: 5px;
+    }
+
+    &.footer-right {
+      justify-content: flex-end;
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+}

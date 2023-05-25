@@ -1,0 +1,74 @@
+@import "@/styles/shared.scss";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+
+  @include mobile {
+    margin: 0;
+  }
+
+  & > div {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+
+  textarea {
+    word-break: break-all;
+  }
+
+  // fix bug
+  div.wrapper {
+    height: auto;
+    max-width: 100%;
+  }
+
+  // fix bug
+  span.point {
+    box-sizing: border-box;
+  }
+
+  .result-link {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+
+    div {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-bottom: 0;
+      }
+
+      svg {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      margin: 3rem;
+
+      @include mobile {
+        margin: 0.5rem;
+      }
+    }
+  }
+}

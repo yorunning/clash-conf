@@ -11,6 +11,7 @@ import {
 import { useToasts, useClipboard } from "@geist-ui/core";
 import { Copy, ExternalLink, Link2 } from "@geist-ui/icons";
 
+import styles from "./content.module.scss";
 import { generateRawLink, generateShortLink } from "@/lib/utils";
 
 const radioItems = [
@@ -61,7 +62,7 @@ export default function Content() {
   }
 
   return (
-    <div className="content">
+    <div className={styles["content"]}>
       <div>
         <Text>Conversion type</Text>
         <Radio.Group
@@ -112,7 +113,7 @@ export default function Content() {
       </div>
 
       <div>
-        <div className="result-link">
+        <div className={styles["result-link"]}>
           <div>
             <Text>Result link</Text>
             <Tooltip text="Enable / Disable short link." placement="topStart">
@@ -143,7 +144,7 @@ export default function Content() {
         />
       </div>
 
-      <div className="button-group">
+      <div className={styles["button-group"]}>
         <Button
           type="secondary"
           shadow

@@ -1,0 +1,34 @@
+@import "@/styles/shared.scss";
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .title {
+    width: 100%;
+
+    h2 {
+      margin-bottom: 0;
+    }
+  }
+
+  .view-code {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    @include mobile {
+      display: none;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-left: 2px;
+      }
+    }
+  }
+}
