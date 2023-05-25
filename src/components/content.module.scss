@@ -16,7 +16,7 @@
   p {
     margin-top: 0;
     margin-bottom: 0.5rem;
-    color: #444;
+    color: #444 !important;
   }
 
   textarea {
@@ -24,14 +24,13 @@
   }
 
   // fix bug
-  div.wrapper {
-    height: auto;
-    max-width: 100%;
+  span:global(.point) {
+    box-sizing: border-box;
   }
 
-  // fix bug
-  span.point {
-    box-sizing: border-box;
+  //fix bug
+  div:global(.wrapper) {
+    height: auto;
   }
 
   .result-link {
@@ -45,10 +44,7 @@
 
       p {
         margin-bottom: 0;
-      }
-
-      svg {
-        margin-left: 0.5rem;
+        margin-right: 0.5rem;
       }
     }
   }
