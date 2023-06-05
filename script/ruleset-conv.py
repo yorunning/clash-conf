@@ -12,7 +12,7 @@ def get_abspath(path: str) -> str:
 
 
 def url_base64_encode(url: str) -> str:
-    return base64.b64encode(url.encode('utf-8')).decode('utf-8')
+    return base64.b64encode(url.encode("utf-8")).decode("utf-8")
 
 
 """
@@ -22,10 +22,10 @@ def url_base64_encode(url: str) -> str:
 FDTDRTU1IvQUNMNFNTUkBtYXN0ZXIvQ2xhc2gvTG9jYWxBcmVhTmV0d29yay5saXN0
 转换类型: 3->domain rule, 4->ipcidr rule
 """
-CONV_INTERFACE: Final[str] = 'https://sub.xeton.dev/getruleset?'
+CONV_INTERFACE: Final[str] = "https://sub.xeton.dev/getruleset?"
 CONV_TYPES: Final[tuple[int, int]] = (3, 4)
-OUTPUT_DIR: Final[str] = get_abspath('../rule/')
-OUTPUT_FILE: Final[str] = get_abspath('./rule-providers.yaml')
+OUTPUT_DIR: Final[str] = get_abspath("../rule/")
+OUTPUT_FILE: Final[str] = get_abspath("./rule-providers.yaml")
 
 
 def init(func: Callable) -> Callable:
@@ -52,60 +52,60 @@ def convert_ruleset() -> list[str]:
     ruleset_name_list: list[str] = []
 
     # Read the ruleset URL from `ruleset-url.txt`
-    with open(get_abspath('./ruleset-url.txt'), 'r') as fr:
-        ruleset_url_list.extend(map(lambda x: x.rstrip('\n'), fr.readlines()))
+    with open(get_abspath("./ruleset-url.txt"), "r") as fr:
+        ruleset_url_list.extend(map(lambda x: x.rstrip("\n"), fr.readlines()))
 
     for ruleset_url in ruleset_url_list:
-        ruleset_name_prefix: str = ruleset_url.split('/')[-1].split('.')[0]
+        ruleset_name_prefix: str = ruleset_url.split("/")[-1].split(".")[0]
 
         for conv_type in CONV_TYPES:
-            ruleset_name_suffix: str = 'domain' if conv_type == 3 else 'ipcidr'
+            ruleset_name_suffix: str = "domain" if conv_type == 3 else "ipcidr"
 
-            request_url: str = '{}type={}&url={}'.format(
+            request_url: str = "{}type={}&url={}".format(
                 CONV_INTERFACE, str(conv_type), url_base64_encode(ruleset_url)
             )
             response_content: bytes = requests.get(request_url).content
 
             # Skip ruleset with empty content
             if response_content != b"payload:\n  - '0.0.0.0/32'":
-                ruleset_name: str = '_'.join([ruleset_name_prefix, ruleset_name_suffix])
+                ruleset_name: str = "_".join([ruleset_name_prefix, ruleset_name_suffix])
                 ruleset_name_list.append(ruleset_name)
 
-                with open(os.path.join(OUTPUT_DIR, ruleset_name + '.yaml'), 'wb') as fw:
+                with open(os.path.join(OUTPUT_DIR, ruleset_name + ".yaml"), "wb") as fw:
                     fw.write(response_content)
-                print('{} <- {}.yaml'.format(OUTPUT_DIR, ruleset_name))
+                print("{} <- {}.yaml".format(OUTPUT_DIR, ruleset_name))
 
     return ruleset_name_list
 
 
 def generate_rule_providers(ruleset_name_list: list[str]) -> None:
     rule_providers_items: dict[str, dict[str, str | int]] = {}
-    rule_providers = {'rule-providers': rule_providers_items}
+    rule_providers = {"rule-providers": rule_providers_items}
 
     for ruleset_name in ruleset_name_list:
         # rule-providers template
         rule_providers_items[ruleset_name] = {
-            'type': 'http',
-            'behavior': ruleset_name.split('_')[-1],
-            'url': ''.join(
+            "type": "http",
+            "behavior": ruleset_name.split("_")[-1],
+            "url": "".join(
                 [
-                    'https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/',
+                    "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/",
                     ruleset_name,
-                    '.yaml',
+                    ".yaml",
                 ]
             ),
-            'path': './ruleset/{}.yaml'.format(ruleset_name),
-            'interval': 86400,
+            "path": "./ruleset/{}.yaml".format(ruleset_name),
+            "interval": 86400,
         }
 
     # Convert dict to yaml
     rule_providers_content: str = yaml.dump(rule_providers, sort_keys=False).replace(
-        '86400', '86400\n'
+        "86400", "86400\n"
     )
 
-    with open(OUTPUT_FILE, 'w') as fw:
+    with open(OUTPUT_FILE, "w") as fw:
         fw.write(rule_providers_content)
-    print('{} <- {}'.format(*os.path.split(OUTPUT_FILE)))
+    print("{} <- {}".format(*os.path.split(OUTPUT_FILE)))
 
 
 @init
@@ -117,5 +117,5 @@ def main(is_generate_rule_providers: bool = True) -> None:
         convert_ruleset()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(False)
