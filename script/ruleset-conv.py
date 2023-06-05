@@ -1,7 +1,8 @@
 import base64
 import functools
 import os
-from typing import Callable, Final
+from collections.abc import Callable
+from typing import Final
 
 import requests
 import yaml
@@ -52,7 +53,7 @@ def convert_ruleset() -> list[str]:
     ruleset_name_list: list[str] = []
 
     # Read the ruleset URL from `ruleset-url.txt`
-    with open(get_abspath("./ruleset-url.txt"), "r") as fr:
+    with open(get_abspath("./ruleset-url.txt")) as fr:
         ruleset_url_list.extend(map(lambda x: x.rstrip("\n"), fr.readlines()))
 
     for ruleset_url in ruleset_url_list:
@@ -94,7 +95,7 @@ def generate_rule_providers(ruleset_name_list: list[str]) -> None:
                     ".yaml",
                 ]
             ),
-            "path": "./ruleset/{}.yaml".format(ruleset_name),
+            "path": f"./ruleset/{ruleset_name}.yaml",
             "interval": 86400,
         }
 
