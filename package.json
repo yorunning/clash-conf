@@ -1,6 +1,8 @@
 {
   "name": "sub-conv-webui",
   "version": "0.2.1",
+  "description": "",
+  "author": [{ name = "Yorun", email = "yorun@yorun.me" }],
   "private": true,
   "scripts": {
     "dev": "next dev",
