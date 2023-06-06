@@ -1,8 +1,8 @@
 {
-  "name": "sub-conv-webui",
+  "name": "sub-conv",
   "version": "0.2.1",
-  "description": "",
-  "author": [{ name = "Yorun", email = "yorun@yorun.me" }],
+  "description": "Quickly convert Clash & Stash configuration files.",
+  "author": "Yorun <yorun@yorun.me>",
   "private": true,
   "scripts": {
     "dev": "next dev",

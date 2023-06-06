@@ -1,6 +1,7 @@
 node_modules/
 .next/
 .venv/
+.ruff_cache/
 .mypy_cache/
 
 script/rule-providers.yaml

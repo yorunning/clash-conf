@@ -5,7 +5,10 @@ description = "此脚本用于将classical规则集拆分为domain与ipcidr规�
 authors = [{ name = "Yorun", email = "yorun@yorun.me" }]
 classifiers = ["Private :: Do Not Upload"]
 requires-python = ">=3.11"
-dependencies = ["requests~=2.31.0", "pyyaml~=6.0"]
+dependencies = [
+    "requests~=2.31.0",
+    "pyyaml~=6.0",
+]
 
 [tool.rye]
 managed = true
