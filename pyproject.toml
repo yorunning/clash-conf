@@ -3,12 +3,8 @@ name = "ruleset-conv"
 version = "0.6.0"
 description = "此脚本用于将classical规则集拆分为domain与ipcidr规则集。"
 authors = [{ name = "Yorun", email = "yorun@yorun.me" }]
+requires-python = ">=3.11"
 dependencies = ["requests~=2.31.0", "pyyaml~=6.0"]
-requires-python = ">= 3.11"
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 
 [tool.rye]
 managed = true
@@ -23,12 +19,13 @@ dev-dependencies = [
 [tool.rye.scripts]
 start = "python ./script/ruleset-conv.py"
 "lint:check" = { chain = ["format", "ruff check script"] }
-"lint:fix" = { chain = ["format", "ruff check --fix script"] }
+"lint:fix" = { chain = ["ruff check --fix script", "format"] }
 format = "black script"
-
-[tool.hatch.metadata]
-allow-direct-references = true
 
 [tool.ruff]
 select = ["E", "F", "I", "UP"]
 ignore = ["UP032"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
