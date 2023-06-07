@@ -1,6 +1,6 @@
 [project]
 name = "ruleset-conv"
-version = "0.6.0"
+version = "0.7.0"
 description = "此脚本用于将classical规则集拆分为domain与ipcidr规则集。"
 authors = [{ name = "Yorun", email = "yorun@yorun.me" }]
 classifiers = ["Private :: Do Not Upload"]
@@ -21,13 +21,13 @@ dev-dependencies = [
 ]
 
 [tool.rye.scripts]
-start = "python ./script/ruleset-conv.py"
+start = "python script/ruleset-conv.py"
 "lint:check" = { chain = ["format", "ruff check script"] }
 "lint:fix" = { chain = ["ruff check --fix script", "format"] }
 format = "black script"
 
 [tool.ruff]
-select = ["E", "F", "I", "UP"]
+select = ["E", "F", "I", "UP", "RUF"]
 ignore = ["UP032"]
 
 [build-system]

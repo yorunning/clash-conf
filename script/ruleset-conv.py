@@ -2,7 +2,7 @@ import base64
 import functools
 import os
 from collections.abc import Callable
-from typing import Final
+from typing import Final, ParamSpec, TypeAlias, TypeVar
 
 import requests
 import yaml
@@ -29,11 +29,15 @@ OUTPUT_DIR: Final[str] = get_abspath("../rule/")
 OUTPUT_FILE: Final[str] = get_abspath("./rule-providers.yaml")
 
 
-def init(func: Callable) -> Callable:
+P = ParamSpec("P")
+T = TypeVar("T")
+
+
+def init(func: Callable[P, T]) -> Callable[P, T]:
     """Clean up existing output"""
 
     @functools.wraps(func)
-    def wrapper(*args, **kw):
+    def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
         if os.path.exists(OUTPUT_DIR):
             for filename in os.listdir(OUTPUT_DIR):
                 os.remove(os.path.join(OUTPUT_DIR, filename))
@@ -43,7 +47,7 @@ def init(func: Callable) -> Callable:
         if os.path.exists(OUTPUT_FILE):
             os.remove(OUTPUT_FILE)
 
-        return func(*args, **kw)
+        return func(*args, **kwargs)
 
     return wrapper
 
@@ -79,13 +83,17 @@ def convert_ruleset() -> list[str]:
     return ruleset_name_list
 
 
+RuleProvidersItem: TypeAlias = dict[str, str | int]
+RuleProvidersItems: TypeAlias = dict[str, RuleProvidersItem]
+RuleProviders: TypeAlias = dict[str, RuleProvidersItems]
+
+
 def generate_rule_providers(ruleset_name_list: list[str]) -> None:
-    rule_providers_items: dict[str, dict[str, str | int]] = {}
-    rule_providers = {"rule-providers": rule_providers_items}
+    rule_providers_items: RuleProvidersItems = {}
 
     for ruleset_name in ruleset_name_list:
         # rule-providers template
-        rule_providers_items[ruleset_name] = {
+        rule_providers_item: RuleProvidersItem = {
             "type": "http",
             "behavior": ruleset_name.split("_")[-1],
             "url": "".join(
@@ -98,25 +106,26 @@ def generate_rule_providers(ruleset_name_list: list[str]) -> None:
             "path": f"./ruleset/{ruleset_name}.yaml",
             "interval": 86400,
         }
+        rule_providers_items.update({ruleset_name: rule_providers_item})
 
+    rule_providers: RuleProviders = {"rule-providers": rule_providers_items}
     # Convert dict to yaml
-    rule_providers_content: str = yaml.dump(rule_providers, sort_keys=False).replace(
+    rule_providers_string: str = yaml.dump(rule_providers, sort_keys=False).replace(
         "86400", "86400\n"
     )
 
     with open(OUTPUT_FILE, "w") as fw:
-        fw.write(rule_providers_content)
+        fw.write(rule_providers_string)
     print("{} <- {}".format(*os.path.split(OUTPUT_FILE)))
 
 
 @init
-def main(is_generate_rule_providers: bool = True) -> None:
+def main(is_generate_rule_providers: bool = False) -> None:
     if is_generate_rule_providers:
-        ruleset_name_list = convert_ruleset()
-        generate_rule_providers(ruleset_name_list)
+        generate_rule_providers(convert_ruleset())
     else:
         convert_ruleset()
 
 
 if __name__ == "__main__":
-    main(False)
+    main()
