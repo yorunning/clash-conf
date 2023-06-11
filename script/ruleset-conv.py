@@ -61,19 +61,19 @@ def convert_ruleset() -> list[str]:
         ruleset_url_list.extend(map(lambda x: x.rstrip("\n"), fr.readlines()))
 
     for ruleset_url in ruleset_url_list:
-        ruleset_name_prefix: str = ruleset_url.split("/")[-1].split(".")[0]
+        ruleset_name_prefix = ruleset_url.split("/")[-1].split(".")[0]
 
         for conv_type in CONV_TYPES:
-            ruleset_name_suffix: str = "domain" if conv_type == 3 else "ipcidr"
+            ruleset_name_suffix = "domain" if conv_type == 3 else "ipcidr"
 
-            request_url: str = "{}type={}&url={}".format(
+            request_url = "{}type={}&url={}".format(
                 CONV_INTERFACE, str(conv_type), url_base64_encode(ruleset_url)
             )
-            response_content: bytes = requests.get(request_url).content
+            response_content = requests.get(request_url).content
 
             # Skip ruleset with empty content
             if response_content != b"payload:\n  - '0.0.0.0/32'":
-                ruleset_name: str = "_".join([ruleset_name_prefix, ruleset_name_suffix])
+                ruleset_name = "_".join([ruleset_name_prefix, ruleset_name_suffix])
                 ruleset_name_list.append(ruleset_name)
 
                 with open(os.path.join(OUTPUT_DIR, ruleset_name + ".yaml"), "wb") as fw:
@@ -89,6 +89,7 @@ RuleProviders: TypeAlias = dict[str, RuleProvidersItems]
 
 
 def generate_rule_providers(ruleset_name_list: list[str]) -> None:
+    rule_providers: RuleProviders = {}
     rule_providers_items: RuleProvidersItems = {}
 
     for ruleset_name in ruleset_name_list:
@@ -108,9 +109,9 @@ def generate_rule_providers(ruleset_name_list: list[str]) -> None:
         }
         rule_providers_items.update({ruleset_name: rule_providers_item})
 
-    rule_providers: RuleProviders = {"rule-providers": rule_providers_items}
+    rule_providers.update({"rule-providers": rule_providers_items})
     # Convert dict to yaml
-    rule_providers_string: str = yaml.dump(rule_providers, sort_keys=False).replace(
+    rule_providers_string = yaml.dump(rule_providers, sort_keys=False).replace(
         "86400", "86400\n"
     )
 
