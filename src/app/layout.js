@@ -1,5 +1,6 @@
 import Providers from "./providers";
 import siteinfo from "./siteinfo.json";
+
 import "@/styles/globals.scss";
 
 export const metadata = {
