@@ -85,7 +85,6 @@ export default function Content() {
       <div>
         <Input
           width="100%"
-          font="1rem"
           placeholder="Please enter"
           clearable
           type={subLink !== "" ? "secondary" : "default"}
@@ -101,7 +100,6 @@ export default function Content() {
       <div>
         <Input
           width="100%"
-          font="0.75rem"
           placeholder="Please enter"
           clearable
           type={configName !== "" ? "secondary" : "default"}
