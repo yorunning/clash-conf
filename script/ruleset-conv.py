@@ -99,7 +99,7 @@ def generate_rule_providers(ruleset_name_list: list[str]) -> None:
             "behavior": ruleset_name.split("_")[-1],
             "url": "".join(
                 [
-                    "https://cdn.jsdelivr.net/gh/yorunning/clash_conf@main/rule/",
+                    "https://fastly.jsdelivr.net/gh/yorunning/clash_conf@main/rule/",
                     ruleset_name,
                     ".yaml",
                 ]
