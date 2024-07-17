@@ -1,7 +1,7 @@
 function processSubLink(convertType, subLink) {
   return convertType === "stash-ml"
     ? encodeURIComponent(
-        "https://host.skyvpn.one/update_v2ray_subscribe.php?" +
+        "https://host.fawncloud.one/update_v2ray_subscribe.php?" +
           `subscribe=${subLink}&&host=puui.qpic.cn&&port=80`
       )
     : subLink;
